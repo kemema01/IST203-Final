@@ -31,6 +31,7 @@ Partial Class AttendanceForm
         Me.btnRemove = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnContinue = New System.Windows.Forms.Button()
+        Me.btnReset = New System.Windows.Forms.Button()
         Me.grpAll.SuspendLayout()
         Me.grpPresent.SuspendLayout()
         Me.SuspendLayout()
@@ -118,11 +119,21 @@ Partial Class AttendanceForm
         Me.btnContinue.Text = "Continue"
         Me.btnContinue.UseVisualStyleBackColor = True
         '
+        'btnReset
+        '
+        Me.btnReset.Location = New System.Drawing.Point(165, 282)
+        Me.btnReset.Name = "btnReset"
+        Me.btnReset.Size = New System.Drawing.Size(100, 25)
+        Me.btnReset.TabIndex = 9
+        Me.btnReset.Text = "Reset"
+        Me.btnReset.UseVisualStyleBackColor = True
+        '
         'AttendanceForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(432, 318)
+        Me.Controls.Add(Me.btnReset)
         Me.Controls.Add(Me.btnContinue)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnRemove)
@@ -134,6 +145,8 @@ Partial Class AttendanceForm
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "AttendanceForm"
+        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Who is here?"
         Me.grpAll.ResumeLayout(False)
         Me.grpPresent.ResumeLayout(False)
@@ -150,4 +163,5 @@ Partial Class AttendanceForm
     Friend WithEvents btnRemove As Button
     Friend WithEvents btnCancel As Button
     Friend WithEvents btnContinue As Button
+    Friend WithEvents btnReset As Button
 End Class

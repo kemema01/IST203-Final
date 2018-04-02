@@ -49,6 +49,7 @@ Partial Class MainForm
         '
         'btnExit
         '
+        Me.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnExit.Location = New System.Drawing.Point(265, 183)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(75, 30)
@@ -89,6 +90,8 @@ Partial Class MainForm
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "MainForm"
+        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "The Decider"
         Me.ResumeLayout(False)
 
