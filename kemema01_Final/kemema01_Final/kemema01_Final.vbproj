@@ -78,6 +78,7 @@
     <Compile Include="AttendanceForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DecisionControl.vb" />
     <Compile Include="HistoryForm.Designer.vb">
       <DependentUpon>HistoryForm.vb</DependentUpon>
     </Compile>
@@ -112,6 +113,9 @@
     <Compile Include="OptionsForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Person.vb" />
+    <Compile Include="Restaurant.vb" />
+    <Compile Include="Tag.vb" />
     <Compile Include="WhatSoundsGoodForm.Designer.vb">
       <DependentUpon>WhatSoundsGoodForm.vb</DependentUpon>
     </Compile>
