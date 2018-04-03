@@ -78,6 +78,7 @@
     <Compile Include="AttendanceForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Category.vb" />
     <Compile Include="DecisionControl.vb" />
     <Compile Include="HistoryForm.Designer.vb">
       <DependentUpon>HistoryForm.vb</DependentUpon>
@@ -107,6 +108,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="OptionsControl.vb" />
     <Compile Include="OptionsForm.Designer.vb">
       <DependentUpon>OptionsForm.vb</DependentUpon>
     </Compile>
@@ -135,6 +137,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionsForm.resx">
+      <DependentUpon>OptionsForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WhatSoundsGoodForm.resx">
       <DependentUpon>WhatSoundsGoodForm.vb</DependentUpon>
