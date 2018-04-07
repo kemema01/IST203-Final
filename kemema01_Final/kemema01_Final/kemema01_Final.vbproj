@@ -79,6 +79,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Category.vb" />
+    <Compile Include="DBUtilities.vb" />
     <Compile Include="DecisionControl.vb" />
     <Compile Include="EditPeopleForm.Designer.vb">
       <DependentUpon>EditPeopleForm.vb</DependentUpon>
