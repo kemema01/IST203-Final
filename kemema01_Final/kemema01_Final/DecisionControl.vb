@@ -2,15 +2,26 @@
     'SHARED variables
     'Private, empty constructor
     '--Maybe. Probably not.
-    Private Shared mPeopleMasterList As New List(Of Person)
-    Private Shared mPeoplePresentList As New List(Of Person)
-    Private Shared mProgress As Integer = 0
+    Private Shared mPeopleMasterList As List(Of Person)
+    Private Shared mPeoplePresentList As List(Of Person)
+    Private Shared mProgress As Integer
 
     Private Sub New()
-        'Can't instantiate
+
+    End Sub
+
+    'reset decisioncontrol
+    Public Shared Sub Reset()
+        Progress = 0
+        PeopleMasterList = New List(Of Person)
+        PeoplePresentList = New List(Of Person)
+
     End Sub
 
     Public Shared Property Progress As Integer
+        '0: Fresh run, nothing set.
+        '1: Attendance form first load, populate master people list
+        '2: Attendance form operation complete, people present list received
         Get
             Return mProgress
         End Get

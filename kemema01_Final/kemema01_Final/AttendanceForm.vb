@@ -2,11 +2,15 @@
 Option Strict On
 
 Public Class AttendanceForm
-    Private formLoaded As Boolean = False
     Private peoplePresent As New List(Of Person)
     Private peopleAll As New List(Of Person)
 
     Private Sub AttendanceForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If DecisionControl.Progress = 0 Then
+            DecisionControl.PeopleMasterList = DBUtilities.GetMembersList()
+            DecisionControl.Progress = 1
+        End If
+
         'reset/load lists
         LoadLists()
 
@@ -14,7 +18,6 @@ Public Class AttendanceForm
         lstAllPeople.DataSource = peopleAll
         lstPresent.DataSource = peoplePresent
 
-        formLoaded = True
     End Sub
 
     'reset and re-load local lists from decisioncontrol lists
@@ -22,12 +25,14 @@ Public Class AttendanceForm
         peopleAll.Clear()
         peoplePresent.Clear()
 
-        If DecisionControl.Progress > 0 Then
+        'if dc.peoplepresentlist has people, add them to the local list
+        If DecisionControl.PeoplePresentList.Count > 0 Then
             For Each buddy In DecisionControl.PeoplePresentList
                 peoplePresent.Add(buddy)
             Next
         End If
-        If DecisionControl.Progress > 0 Then
+        'load the local peopelAll list - if peoplepresent contains items, don't add those to peopleAll
+        If peoplePresent.Count > 0 Then
             For Each buddy In DecisionControl.PeopleMasterList
                 If Not peoplePresent.Contains(buddy) Then
                     peopleAll.Add(buddy)
@@ -85,8 +90,8 @@ Public Class AttendanceForm
             errProv.SetError(lstPresent, "List can't be empty!")
             Return
         End If
-        If DecisionControl.Progress < 1 Then
-            DecisionControl.Progress = 1
+        If DecisionControl.Progress < 2 Then
+            DecisionControl.Progress = 2
         End If
     End Sub
 End Class
