@@ -22,6 +22,7 @@ Partial Class AttendanceForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.lstAllPeople = New System.Windows.Forms.ListBox()
         Me.lstPresent = New System.Windows.Forms.ListBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -32,8 +33,10 @@ Partial Class AttendanceForm
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnContinue = New System.Windows.Forms.Button()
         Me.btnReset = New System.Windows.Forms.Button()
+        Me.errProv = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.grpAll.SuspendLayout()
         Me.grpPresent.SuspendLayout()
+        CType(Me.errProv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lstAllPeople
@@ -128,6 +131,10 @@ Partial Class AttendanceForm
         Me.btnReset.Text = "Reset"
         Me.btnReset.UseVisualStyleBackColor = True
         '
+        'errProv
+        '
+        Me.errProv.ContainerControl = Me
+        '
         'AttendanceForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -150,6 +157,7 @@ Partial Class AttendanceForm
         Me.Text = "Who is here?"
         Me.grpAll.ResumeLayout(False)
         Me.grpPresent.ResumeLayout(False)
+        CType(Me.errProv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -164,4 +172,5 @@ Partial Class AttendanceForm
     Friend WithEvents btnCancel As Button
     Friend WithEvents btnContinue As Button
     Friend WithEvents btnReset As Button
+    Friend WithEvents errProv As ErrorProvider
 End Class

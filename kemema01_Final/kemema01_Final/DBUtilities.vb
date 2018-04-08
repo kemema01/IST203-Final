@@ -15,7 +15,7 @@ Public NotInheritable Class DBUtilities
     Private Shared mLastStatus As String
 
     Private Sub New()
-        'Can't instanstiate this.
+        'Can't instanstiate this class.
     End Sub
 
     'FILL
@@ -37,6 +37,30 @@ Public NotInheritable Class DBUtilities
             conn.Close()
         End Try
         Return table
+    End Function
+
+    Public Shared Function GetMembersList() As List(Of Person)
+        Dim list As New List(Of Person)
+
+        SQL = "SELECT " '+ ID, Name FROM Table ORDER BY Name
+
+        Try
+            conn = New SqlConnection(CONNECTION_STRING)
+            conn.Open()
+            command = New SqlCommand(SQL, conn)
+            reader = command.ExecuteReader
+
+            While (reader.Read)
+                Dim ID As Integer = reader.GetInt32(0)
+                Dim name As String = reader.GetString(1)
+                Dim temp As New Person(ID, name)
+                list.Add(temp)
+            End While
+        Catch ex As Exception
+            list = Nothing
+        Finally
+            conn.Close()
+        End Try
     End Function
 
     'INSERT
