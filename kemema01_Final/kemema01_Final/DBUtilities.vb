@@ -64,6 +64,31 @@ Public NotInheritable Class DBUtilities
         Return list
     End Function
 
+    Public Shared Function GetTagList() As List(Of Tag)
+        Dim list As New List(Of Tag)
+
+        SQL = "SELECT " '+ ID, Name FROM Table ORDER BY Name
+
+        Try
+            conn = New SqlConnection(CONNECTION_STRING)
+            conn.Open()
+            command = New SqlCommand(SQL, conn)
+            reader = command.ExecuteReader
+
+            While (reader.Read)
+                Dim ID As Integer = reader.GetInt32(0)
+                Dim name As String = reader.GetString(1)
+                Dim temp As New Tag(ID, name)
+                list.Add(temp)
+            End While
+        Catch ex As Exception
+            list = Nothing
+        Finally
+            conn.Close()
+        End Try
+        Return list
+    End Function
+
     'INSERT
     Public Shared Function InsertMember(pPerson As Person) As Boolean
         Dim result As Boolean = False

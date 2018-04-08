@@ -22,6 +22,7 @@ Partial Class WhatSoundsGoodForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.lstAllTags = New System.Windows.Forms.ListBox()
         Me.lstDesiredTags = New System.Windows.Forms.ListBox()
         Me.btnReset = New System.Windows.Forms.Button()
@@ -35,8 +36,10 @@ Partial Class WhatSoundsGoodForm
         Me.chkDineIn = New System.Windows.Forms.CheckBox()
         Me.chkCarryOut = New System.Windows.Forms.CheckBox()
         Me.chkDelivery = New System.Windows.Forms.CheckBox()
+        Me.errprov = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.grpDesired.SuspendLayout()
         Me.grpAllTags.SuspendLayout()
+        CType(Me.errprov, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lstAllTags
@@ -62,7 +65,7 @@ Partial Class WhatSoundsGoodForm
         Me.btnReset.Location = New System.Drawing.Point(165, 309)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.Size = New System.Drawing.Size(100, 25)
-        Me.btnReset.TabIndex = 17
+        Me.btnReset.TabIndex = 7
         Me.btnReset.Text = "Reset"
         Me.btnReset.UseVisualStyleBackColor = True
         '
@@ -71,7 +74,7 @@ Partial Class WhatSoundsGoodForm
         Me.btnContinue.Location = New System.Drawing.Point(318, 309)
         Me.btnContinue.Name = "btnContinue"
         Me.btnContinue.Size = New System.Drawing.Size(100, 25)
-        Me.btnContinue.TabIndex = 16
+        Me.btnContinue.TabIndex = 8
         Me.btnContinue.Text = "Continue"
         Me.btnContinue.UseVisualStyleBackColor = True
         '
@@ -80,7 +83,7 @@ Partial Class WhatSoundsGoodForm
         Me.btnCancel.Location = New System.Drawing.Point(12, 309)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(100, 25)
-        Me.btnCancel.TabIndex = 15
+        Me.btnCancel.TabIndex = 9
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
@@ -89,7 +92,7 @@ Partial Class WhatSoundsGoodForm
         Me.btnRemove.Location = New System.Drawing.Point(224, 278)
         Me.btnRemove.Name = "btnRemove"
         Me.btnRemove.Size = New System.Drawing.Size(100, 25)
-        Me.btnRemove.TabIndex = 14
+        Me.btnRemove.TabIndex = 6
         Me.btnRemove.Text = "< Remove"
         Me.btnRemove.UseVisualStyleBackColor = True
         '
@@ -98,7 +101,7 @@ Partial Class WhatSoundsGoodForm
         Me.btnAdd.Location = New System.Drawing.Point(106, 278)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(100, 25)
-        Me.btnAdd.TabIndex = 13
+        Me.btnAdd.TabIndex = 5
         Me.btnAdd.Text = "Add >"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
@@ -108,7 +111,7 @@ Partial Class WhatSoundsGoodForm
         Me.grpDesired.Location = New System.Drawing.Point(218, 80)
         Me.grpDesired.Name = "grpDesired"
         Me.grpDesired.Size = New System.Drawing.Size(200, 192)
-        Me.grpDesired.TabIndex = 12
+        Me.grpDesired.TabIndex = 4
         Me.grpDesired.TabStop = False
         Me.grpDesired.Text = "Desired Tags"
         '
@@ -118,7 +121,7 @@ Partial Class WhatSoundsGoodForm
         Me.grpAllTags.Location = New System.Drawing.Point(12, 80)
         Me.grpAllTags.Name = "grpAllTags"
         Me.grpAllTags.Size = New System.Drawing.Size(200, 192)
-        Me.grpAllTags.TabIndex = 11
+        Me.grpAllTags.TabIndex = 3
         Me.grpAllTags.TabStop = False
         Me.grpAllTags.Text = "All Tags"
         '
@@ -127,7 +130,7 @@ Partial Class WhatSoundsGoodForm
         Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Label1.Location = New System.Drawing.Point(12, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(406, 41)
+        Me.Label1.Size = New System.Drawing.Size(406, 26)
         Me.Label1.TabIndex = 10
         Me.Label1.Text = "Next, The Decider needs to know what the group is hungry for."
         '
@@ -137,7 +140,7 @@ Partial Class WhatSoundsGoodForm
         Me.chkDineIn.Location = New System.Drawing.Point(12, 53)
         Me.chkDineIn.Name = "chkDineIn"
         Me.chkDineIn.Size = New System.Drawing.Size(74, 21)
-        Me.chkDineIn.TabIndex = 18
+        Me.chkDineIn.TabIndex = 0
         Me.chkDineIn.Text = "Dine In"
         Me.chkDineIn.UseVisualStyleBackColor = True
         '
@@ -147,7 +150,7 @@ Partial Class WhatSoundsGoodForm
         Me.chkCarryOut.Location = New System.Drawing.Point(318, 53)
         Me.chkCarryOut.Name = "chkCarryOut"
         Me.chkCarryOut.Size = New System.Drawing.Size(91, 21)
-        Me.chkCarryOut.TabIndex = 19
+        Me.chkCarryOut.TabIndex = 2
         Me.chkCarryOut.Text = "Carry Out"
         Me.chkCarryOut.UseVisualStyleBackColor = True
         '
@@ -157,9 +160,13 @@ Partial Class WhatSoundsGoodForm
         Me.chkDelivery.Location = New System.Drawing.Point(165, 53)
         Me.chkDelivery.Name = "chkDelivery"
         Me.chkDelivery.Size = New System.Drawing.Size(81, 21)
-        Me.chkDelivery.TabIndex = 20
+        Me.chkDelivery.TabIndex = 1
         Me.chkDelivery.Text = "Delivery"
         Me.chkDelivery.UseVisualStyleBackColor = True
+        '
+        'errprov
+        '
+        Me.errprov.ContainerControl = Me
         '
         'WhatSoundsGoodForm
         '
@@ -186,6 +193,7 @@ Partial Class WhatSoundsGoodForm
         Me.Text = "WhatSoundsGoodForm"
         Me.grpDesired.ResumeLayout(False)
         Me.grpAllTags.ResumeLayout(False)
+        CType(Me.errprov, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -204,4 +212,5 @@ Partial Class WhatSoundsGoodForm
     Friend WithEvents chkDineIn As CheckBox
     Friend WithEvents chkCarryOut As CheckBox
     Friend WithEvents chkDelivery As CheckBox
+    Friend WithEvents errprov As ErrorProvider
 End Class

@@ -34,22 +34,22 @@ Partial Class OptionsForm
         Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Label1.Location = New System.Drawing.Point(12, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(305, 20)
+        Me.Label1.Size = New System.Drawing.Size(360, 20)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Any way you want it, that's the way you need it."
+        Me.Label1.Text = "Changes made here will reset any in-progress decision."
         '
         'cmbSelection
         '
         Me.cmbSelection.FormattingEnabled = True
         Me.cmbSelection.Items.AddRange(New Object() {"", "People", "Restaurants"})
-        Me.cmbSelection.Location = New System.Drawing.Point(145, 33)
+        Me.cmbSelection.Location = New System.Drawing.Point(200, 32)
         Me.cmbSelection.Name = "cmbSelection"
         Me.cmbSelection.Size = New System.Drawing.Size(131, 24)
         Me.cmbSelection.TabIndex = 2
         '
         'btnGo
         '
-        Me.btnGo.Location = New System.Drawing.Point(282, 32)
+        Me.btnGo.Location = New System.Drawing.Point(337, 31)
         Me.btnGo.Name = "btnGo"
         Me.btnGo.Size = New System.Drawing.Size(35, 26)
         Me.btnGo.TabIndex = 3
@@ -67,7 +67,7 @@ Partial Class OptionsForm
         '
         'btnDone
         '
-        Me.btnDone.Location = New System.Drawing.Point(242, 63)
+        Me.btnDone.Location = New System.Drawing.Point(297, 62)
         Me.btnDone.Name = "btnDone"
         Me.btnDone.Size = New System.Drawing.Size(75, 23)
         Me.btnDone.TabIndex = 5
@@ -78,7 +78,7 @@ Partial Class OptionsForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(332, 93)
+        Me.ClientSize = New System.Drawing.Size(382, 93)
         Me.Controls.Add(Me.btnDone)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.btnGo)

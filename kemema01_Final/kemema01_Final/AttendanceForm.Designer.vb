@@ -55,7 +55,7 @@ Partial Class AttendanceForm
         Me.lstPresent.Location = New System.Drawing.Point(6, 21)
         Me.lstPresent.Name = "lstPresent"
         Me.lstPresent.Size = New System.Drawing.Size(188, 164)
-        Me.lstPresent.TabIndex = 1
+        Me.lstPresent.TabIndex = 0
         '
         'Label1
         '
@@ -72,7 +72,7 @@ Partial Class AttendanceForm
         Me.grpAll.Location = New System.Drawing.Point(12, 53)
         Me.grpAll.Name = "grpAll"
         Me.grpAll.Size = New System.Drawing.Size(200, 192)
-        Me.grpAll.TabIndex = 3
+        Me.grpAll.TabIndex = 1
         Me.grpAll.TabStop = False
         Me.grpAll.Text = "All Group Members:"
         '
@@ -82,7 +82,7 @@ Partial Class AttendanceForm
         Me.grpPresent.Location = New System.Drawing.Point(218, 53)
         Me.grpPresent.Name = "grpPresent"
         Me.grpPresent.Size = New System.Drawing.Size(200, 192)
-        Me.grpPresent.TabIndex = 4
+        Me.grpPresent.TabIndex = 2
         Me.grpPresent.TabStop = False
         Me.grpPresent.Text = "Present Group Members:"
         '
@@ -91,7 +91,7 @@ Partial Class AttendanceForm
         Me.btnAdd.Location = New System.Drawing.Point(106, 251)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(100, 25)
-        Me.btnAdd.TabIndex = 5
+        Me.btnAdd.TabIndex = 3
         Me.btnAdd.Text = "Add >"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
@@ -100,7 +100,7 @@ Partial Class AttendanceForm
         Me.btnRemove.Location = New System.Drawing.Point(224, 251)
         Me.btnRemove.Name = "btnRemove"
         Me.btnRemove.Size = New System.Drawing.Size(100, 25)
-        Me.btnRemove.TabIndex = 6
+        Me.btnRemove.TabIndex = 4
         Me.btnRemove.Text = "< Remove"
         Me.btnRemove.UseVisualStyleBackColor = True
         '
@@ -118,16 +118,16 @@ Partial Class AttendanceForm
         Me.btnContinue.Location = New System.Drawing.Point(318, 282)
         Me.btnContinue.Name = "btnContinue"
         Me.btnContinue.Size = New System.Drawing.Size(100, 25)
-        Me.btnContinue.TabIndex = 8
+        Me.btnContinue.TabIndex = 6
         Me.btnContinue.Text = "Continue"
         Me.btnContinue.UseVisualStyleBackColor = True
         '
         'btnReset
         '
-        Me.btnReset.Location = New System.Drawing.Point(165, 282)
+        Me.btnReset.Location = New System.Drawing.Point(164, 282)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.Size = New System.Drawing.Size(100, 25)
-        Me.btnReset.TabIndex = 9
+        Me.btnReset.TabIndex = 5
         Me.btnReset.Text = "Reset"
         Me.btnReset.UseVisualStyleBackColor = True
         '

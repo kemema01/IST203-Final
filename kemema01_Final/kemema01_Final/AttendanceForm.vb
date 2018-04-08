@@ -2,10 +2,14 @@
 Option Strict On
 
 Public Class AttendanceForm
-    Private peoplePresent As New List(Of Person)
-    Private peopleAll As New List(Of Person)
+    Private peoplePresent As List(Of Person)
+    Private peopleAll As List(Of Person)
 
     Private Sub AttendanceForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        peoplePresent = New List(Of Person)
+        peopleAll = New List(Of Person)
+
+        'Main decision progression
         If DecisionControl.Progress = 0 Then
             DecisionControl.PeopleMasterList = DBUtilities.GetMembersList()
             DecisionControl.Progress = 1
@@ -87,11 +91,13 @@ Public Class AttendanceForm
             Next
         Else
             Beep()
-            errProv.SetError(lstPresent, "List can't be empty!")
+            errProv.SetError(btnContinue, "List can't be empty!")
             Return
         End If
         If DecisionControl.Progress < 2 Then
             DecisionControl.Progress = 2
         End If
+
+        Me.Close()
     End Sub
 End Class
