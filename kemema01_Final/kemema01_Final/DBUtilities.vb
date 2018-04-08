@@ -61,6 +61,7 @@ Public NotInheritable Class DBUtilities
         Finally
             conn.Close()
         End Try
+        Return list
     End Function
 
     'INSERT

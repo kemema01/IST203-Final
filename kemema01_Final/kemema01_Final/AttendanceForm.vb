@@ -42,35 +42,39 @@ Public Class AttendanceForm
 
     'move person from master list to present list
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        errProv.Clear()
         If Not lstAllPeople.SelectedIndex = -1 Then
             lstPresent.Items.Add(lstAllPeople.SelectedItem)
             lstAllPeople.Items.Remove(lstAllPeople.SelectedItem)
         Else
             Beep()
-            errProv.SetError(lstAllPeople, "Select a person to add!")
+            errProv.SetError(btnAdd, "Select a person to add!")
             Return
         End If
     End Sub
 
     'move person from present list to master list
     Private Sub btnRemove_Click(sender As Object, e As EventArgs) Handles btnRemove.Click
+        errProv.Clear()
         If Not lstPresent.SelectedIndex = -1 Then
             lstAllPeople.Items.Add(lstPresent.SelectedItem)
             lstPresent.Items.Remove(lstPresent.SelectedItem)
         Else
             Beep()
-            errProv.SetError(lstPresent, "Select a person to remove!")
+            errProv.SetError(btnRemove, "Select a person to remove!")
             Return
         End If
     End Sub
 
     'reset local lists and controls
     Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+        errProv.Clear()
         LoadLists()
     End Sub
 
     'update decisioncontrol.peoplepresentlist
     Private Sub btnContinue_Click(sender As Object, e As EventArgs) Handles btnContinue.Click
+        errProv.Clear()
         If peoplePresent.Count > 0 Then
             DecisionControl.PeoplePresentList.Clear()
             For Each buddy In peoplePresent

@@ -13,11 +13,21 @@
         End Set
     End Property
 
-    Public Sub New(pID As Integer, pName As String, pLikes As List(Of Tag), pDislikes As List(Of Tag))
+    Public ReadOnly Property ID As Integer
+        Get
+            Return mID
+        End Get
+    End Property
+
+    Public Sub New(pID As Integer, pName As String)
         mID = pID
         mName = pName
-        ImportLikes(pLikes)
-        ImportDislikes(pDislikes)
+
+    End Sub
+
+    Public Sub New(pPerson As Person)
+        mID = pPerson.ID
+        mName = pPerson.Name
     End Sub
 
     Public Sub ImportLikes(pTags As List(Of Tag))
