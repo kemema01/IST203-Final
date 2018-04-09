@@ -1,4 +1,8 @@
-﻿Public Class Tag
+﻿Imports kemema01_Final
+
+Public Class Tag
+    Implements IComparable(Of Tag)
+
     Private mID As Integer
     Private mTagValue As String
 
@@ -32,5 +36,9 @@
 
     Public Overrides Function ToString() As String
         Return TagValue
+    End Function
+
+    Public Function CompareTo(other As Tag) As Integer Implements IComparable(Of Tag).CompareTo
+        Return Me.TagValue.CompareTo(other.TagValue)
     End Function
 End Class

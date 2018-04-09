@@ -12,6 +12,9 @@ Public Class WhatSoundsGoodForm
 
         'reset/load lists
         LoadLists()
+
+        lstDesiredTags.Sorted = True
+        lstAllTags.Sorted = True
     End Sub
 
     'reset and re-load local lists from decisioncontrol lists

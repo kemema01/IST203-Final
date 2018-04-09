@@ -15,6 +15,9 @@ Public Class AttendanceForm
         'reset/load lists
         LoadLists()
 
+        lstAllPeople.Sorted = True
+        lstPresent.Sorted = True
+
     End Sub
 
     'reset and re-load local lists from decisioncontrol lists
@@ -49,6 +52,7 @@ Public Class AttendanceForm
         If Not lstAllPeople.SelectedIndex = -1 Then
             lstPresent.Items.Add(lstAllPeople.SelectedItem)
             lstAllPeople.Items.Remove(lstAllPeople.SelectedItem)
+
         Else
             Beep()
             errProv.SetError(btnAdd, "Select a person to add!")
