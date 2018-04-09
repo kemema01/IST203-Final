@@ -67,7 +67,7 @@ Public NotInheritable Class DBUtilities
     Public Shared Function GetTagList() As List(Of Tag)
         Dim list As New List(Of Tag)
 
-        SQL = "SELECT " '+ ID, Name FROM Table ORDER BY Name
+        SQL = "SELECT * FROM tags_t ORDER BY TagValue" '+ ID, Name FROM Table ORDER BY Name
 
         Try
             conn = New MySqlConnection(CONNECTION_STRING)

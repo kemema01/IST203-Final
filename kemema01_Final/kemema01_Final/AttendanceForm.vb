@@ -6,24 +6,14 @@ Public Class AttendanceForm
     Private peopleAll As List(Of Person)
 
     Private Sub AttendanceForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        peoplePresent = New List(Of Person)
-        peopleAll = New List(Of Person)
-
         'Main decision progression
         If DecisionControl.Progress = 0 Then
-            Dim temp As New List(Of Person)
-            temp = DBUtilities.GetMembersList
-            DecisionControl.PeopleMasterList = temp
-            'DecisionControl.PeopleMasterList = DBUtilities.GetMembersList()
+            DecisionControl.PeopleMasterList = DBUtilities.GetMembersList()
             DecisionControl.Progress = 1
         End If
 
         'reset/load lists
         LoadLists()
-
-        'wire control datasources to local lists DOES NOT WORK.
-        'lstAllPeople.DataSource = peopleAll
-        'lstPresent.DataSource = peoplePresent
 
     End Sub
 
@@ -85,6 +75,7 @@ Public Class AttendanceForm
         LoadLists()
     End Sub
 
+    'Main decision progression
     'update decisioncontrol.peoplepresentlist
     Private Sub btnContinue_Click(sender As Object, e As EventArgs) Handles btnContinue.Click
         errProv.Clear()

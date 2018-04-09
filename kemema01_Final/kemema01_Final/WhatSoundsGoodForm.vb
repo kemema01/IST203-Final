@@ -2,13 +2,8 @@
 Option Explicit On
 'TODO HANDLE CHECKBOXES
 Public Class WhatSoundsGoodForm
-    Private tagsWanted As List(Of Tag)
-    Private tagsAll As List(Of Tag)
 
     Private Sub WhatSoundsGoodForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        tagsWanted = New List(Of Tag)
-        tagsAll = New List(Of Tag)
-
         'main decision progress
         If DecisionControl.Progress = 2 Then
             DecisionControl.TagMasterList = DBUtilities.GetTagList()
@@ -17,33 +12,29 @@ Public Class WhatSoundsGoodForm
 
         'reset/load lists
         LoadLists()
-        'wire controls to local lists
-        lstAllTags.DataSource = tagsAll
-        lstDesiredTags.DataSource = tagsWanted
-
     End Sub
 
     'reset and re-load local lists from decisioncontrol lists
     Private Sub LoadLists()
-        tagsAll.Clear()
-        tagsWanted.Clear()
+        lstAllTags.Items.Clear()
+        lstDesiredTags.Items.Clear()
 
         'if dc.tagswanted has tags, add them to the local list
         If DecisionControl.TagWantedList.Count > 0 Then
             For Each item In DecisionControl.TagWantedList
-                tagsWanted.Add(item)
+                lstDesiredTags.Items.Add(item)
             Next
         End If
         'load the local tagsall list - if local tagswanted contains specific items, don't add those to tagsAll
-        If tagsWanted.Count > 0 Then
+        If lstDesiredTags.Items.Count > 0 Then
             For Each item In DecisionControl.TagMasterList
-                If Not tagsWanted.Contains(item) Then
-                    tagsAll.Add(item)
+                If Not lstDesiredTags.Items.Contains(item) Then
+                    lstAllTags.Items.Add(item)
                 End If
             Next
         Else
             For Each item In DecisionControl.TagMasterList
-                tagsAll.Add(item)
+                lstAllTags.Items.Add(item)
             Next
         End If
     End Sub
@@ -83,9 +74,9 @@ Public Class WhatSoundsGoodForm
     'update decisioncontrol.tagswanted
     Private Sub btnContinue_Click(sender As Object, e As EventArgs) Handles btnContinue.Click
         errprov.Clear()
-        If tagsWanted.Count > 0 Then
+        If lstDesiredTags.Items.Count > 0 Then
             DecisionControl.PeoplePresentList.Clear()
-            For Each item In tagsWanted
+            For Each item As Tag In lstDesiredTags.Items
                 DecisionControl.TagWantedList.Add(item)
             Next
         Else

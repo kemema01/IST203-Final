@@ -132,7 +132,7 @@ Partial Class WhatSoundsGoodForm
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(406, 26)
         Me.Label1.TabIndex = 10
-        Me.Label1.Text = "Next, The Decider needs to know what the group is hungry for."
+        Me.Label1.Text = "Next, The Decider needs to know what you're hungry for."
         '
         'chkDineIn
         '

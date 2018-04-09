@@ -27,6 +27,10 @@
                 result = True
             End If
         End If
-            Return result
+        Return result
+    End Function
+
+    Public Overrides Function ToString() As String
+        Return TagValue
     End Function
 End Class
