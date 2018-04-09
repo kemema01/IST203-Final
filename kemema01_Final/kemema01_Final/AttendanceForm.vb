@@ -21,33 +21,34 @@ Public Class AttendanceForm
         'reset/load lists
         LoadLists()
 
-        'wire control datasources to local lists
-        lstAllPeople.DataSource = peopleAll
-        lstPresent.DataSource = peoplePresent
+        'wire control datasources to local lists DOES NOT WORK.
+        'lstAllPeople.DataSource = peopleAll
+        'lstPresent.DataSource = peoplePresent
 
     End Sub
 
     'reset and re-load local lists from decisioncontrol lists
     Private Sub LoadLists()
-        peopleAll.Clear()
-        peoplePresent.Clear()
+        lstPresent.Items.Clear()
+        lstAllPeople.Items.Clear()
 
         'if dc.peoplepresentlist has people, add them to the local list
         If DecisionControl.PeoplePresentList.Count > 0 Then
             For Each buddy In DecisionControl.PeoplePresentList
-                peoplePresent.Add(buddy)
+                lstPresent.Items.Add(buddy)
             Next
         End If
         'load the local peopelAll list - if peoplepresent contains items, don't add those to peopleAll
-        If peoplePresent.Count > 0 Then
+        If lstPresent.Items.Count > 0 Then
             For Each buddy In DecisionControl.PeopleMasterList
-                If Not peoplePresent.Contains(buddy) Then
-                    peopleAll.Add(buddy)
+                If Not lstPresent.Items.Contains(buddy) Then
+                    lstAllPeople.Items.Add(buddy)
                 End If
             Next
         Else
             For Each buddy In DecisionControl.PeopleMasterList
-                peopleAll.Add(buddy)
+                'peopleAll.Add(buddy)
+                lstAllPeople.Items.Add(buddy)
             Next
         End If
     End Sub
@@ -87,9 +88,9 @@ Public Class AttendanceForm
     'update decisioncontrol.peoplepresentlist
     Private Sub btnContinue_Click(sender As Object, e As EventArgs) Handles btnContinue.Click
         errProv.Clear()
-        If peoplePresent.Count > 0 Then
+        If lstPresent.Items.Count > 0 Then
             DecisionControl.PeoplePresentList.Clear()
-            For Each buddy In peoplePresent
+            For Each buddy As Person In lstPresent.Items
                 DecisionControl.PeoplePresentList.Add(buddy)
             Next
         Else

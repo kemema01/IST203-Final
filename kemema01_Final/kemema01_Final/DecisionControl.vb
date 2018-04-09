@@ -2,10 +2,10 @@
     'SHARED variables
     'Private, empty constructor
     '--Maybe. Probably not.
-    Private Shared mPeopleMasterList As List(Of Person)
-    Private Shared mPeoplePresentList As List(Of Person)
-    Private Shared mTagMasterList As List(Of Tag)
-    Private Shared mTagWantedList As List(Of Tag)
+    Private Shared mPeopleMasterList As New List(Of Person)
+    Private Shared mPeoplePresentList As New List(Of Person)
+    Private Shared mTagMasterList As New List(Of Tag)
+    Private Shared mTagWantedList As New List(Of Tag)
     Private Shared mProgress As Integer
 
     Private Sub New()

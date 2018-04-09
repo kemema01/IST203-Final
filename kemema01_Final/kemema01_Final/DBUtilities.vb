@@ -1,15 +1,15 @@
 ﻿Option Strict On
 Option Explicit On
 
-Imports System.Data.SqlClient
+Imports MySql.Data.MySqlClient
 
-Public Class DBUtilities
+Public NotInheritable Class DBUtilities
     'Connection Objects
-    Private Shared CONNECTION_STRING As String = "/dump.sql"
-    Private Shared conn As New SqlConnection(CONNECTION_STRING)
-    Private Shared command As SqlCommand
-    Private Shared adapter As SqlDataAdapter
-    Private Shared reader As SqlDataReader
+    Private Shared CONNECTION_STRING As String = "server=localhost;user id=root;password=decider;database=decider"
+    Private Shared conn As New MySqlConnection(CONNECTION_STRING)
+    Private Shared command As MySqlCommand
+    Private Shared adapter As MySqlDataAdapter
+    Private Shared reader As MySqlDataReader
     Private Shared SQL As String
 
     Private Shared mLastStatus As String
@@ -27,7 +27,7 @@ Public Class DBUtilities
             conn.Open()
 
             Dim dataset As New DataSet
-            adapter = New SqlDataAdapter(SQL, conn)
+            adapter = New MySqlDataAdapter(SQL, conn)
             adapter.Fill(dataset)
 
             table = dataset.Tables(0)
@@ -45,9 +45,9 @@ Public Class DBUtilities
         SQL = "SELECT * FROM person_t ORDER BY PerName" '+ ID, Name FROM Table ORDER BY Name
 
         Try
-            conn = New SqlConnection(CONNECTION_STRING)
+            conn = New MySqlConnection(CONNECTION_STRING)
             conn.Open()
-            command = New SqlCommand(SQL, conn)
+            command = New MySqlCommand(SQL, conn)
             reader = command.ExecuteReader
 
             While (reader.Read)
@@ -70,9 +70,9 @@ Public Class DBUtilities
         SQL = "SELECT " '+ ID, Name FROM Table ORDER BY Name
 
         Try
-            conn = New SqlConnection(CONNECTION_STRING)
+            conn = New MySqlConnection(CONNECTION_STRING)
             conn.Open()
-            command = New SqlCommand(SQL, conn)
+            command = New MySqlCommand(SQL, conn)
             reader = command.ExecuteReader
 
             While (reader.Read)
@@ -97,10 +97,10 @@ Public Class DBUtilities
         SQL = "INSERT INTO " 'Table(Name) VALUES(@Name)
 
         Try
-            conn = New SqlConnection(CONNECTION_STRING)
+            conn = New MySqlConnection(CONNECTION_STRING)
             conn.Open()
 
-            command = New SqlCommand(SQL, conn)
+            command = New MySqlCommand(SQL, conn)
             command.Parameters.AddWithValue("@Name", pPerson.Name)
 
             If command.ExecuteNonQuery > 0 Then
