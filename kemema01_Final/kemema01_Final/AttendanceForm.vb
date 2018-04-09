@@ -11,7 +11,10 @@ Public Class AttendanceForm
 
         'Main decision progression
         If DecisionControl.Progress = 0 Then
-            DecisionControl.PeopleMasterList = DBUtilities.GetMembersList()
+            Dim temp As New List(Of Person)
+            temp = DBUtilities.GetMembersList
+            DecisionControl.PeopleMasterList = temp
+            'DecisionControl.PeopleMasterList = DBUtilities.GetMembersList()
             DecisionControl.Progress = 1
         End If
 

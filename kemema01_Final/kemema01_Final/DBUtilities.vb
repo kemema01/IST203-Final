@@ -3,9 +3,9 @@ Option Explicit On
 
 Imports System.Data.SqlClient
 
-Public NotInheritable Class DBUtilities
+Public Class DBUtilities
     'Connection Objects
-    Private Shared CONNECTION_STRING As String = ""
+    Private Shared CONNECTION_STRING As String = "/dump.sql"
     Private Shared conn As New SqlConnection(CONNECTION_STRING)
     Private Shared command As SqlCommand
     Private Shared adapter As SqlDataAdapter
@@ -21,7 +21,7 @@ Public NotInheritable Class DBUtilities
     'FILL
     Public Shared Function GetMembersTable() As DataTable
         Dim table As DataTable
-        SQL = "SELECT * FROM " 'TABLE
+        SQL = "SELECT * FROM person_t" 'TABLE
 
         Try
             conn.Open()
@@ -42,7 +42,7 @@ Public NotInheritable Class DBUtilities
     Public Shared Function GetMembersList() As List(Of Person)
         Dim list As New List(Of Person)
 
-        SQL = "SELECT " '+ ID, Name FROM Table ORDER BY Name
+        SQL = "SELECT * FROM person_t ORDER BY PerName" '+ ID, Name FROM Table ORDER BY Name
 
         Try
             conn = New SqlConnection(CONNECTION_STRING)
