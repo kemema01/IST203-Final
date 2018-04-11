@@ -1,4 +1,9 @@
-﻿Public Class Person
+﻿Option Strict On
+Option Explicit On
+
+Public Class Person
+    Implements IComparable(Of Person)
+
     Private mID As Integer
     Private mName As String
     Private mLikes As List(Of Tag)
@@ -53,6 +58,10 @@
             tmpTag = Nothing
         Next
     End Sub
+
+    Public Function CompareTo(other As Person) As Integer Implements IComparable(Of Person).CompareTo
+        Return Me.Name.CompareTo(other.Name)
+    End Function
 
     Public Overrides Function ToString() As String
         Return Name
