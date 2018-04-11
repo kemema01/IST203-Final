@@ -1,4 +1,7 @@
-﻿Public Class Person
+﻿Option Strict On
+Option Explicit On
+
+Public Class Person
     Implements IComparable(Of Person)
 
     Private mID As Integer

@@ -1,4 +1,7 @@
-﻿Imports kemema01_Final
+﻿Option Strict On
+Option Explicit On
+
+Imports kemema01_Final
 
 Public Class Tag
     Implements IComparable(Of Tag)

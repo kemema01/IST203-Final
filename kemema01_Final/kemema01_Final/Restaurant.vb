@@ -1,4 +1,7 @@
-﻿Imports kemema01_Final
+﻿Option Strict On
+Option Explicit On
+
+Imports kemema01_Final
 
 Public Class Restaurant
     Implements IComparable(Of Restaurant)
@@ -17,12 +20,32 @@ Public Class Restaurant
         End Set
     End Property
 
+    Public Property ID As Integer
+        Get
+            Return mID
+        End Get
+        Set(value As Integer)
+            mID = value
+        End Set
+    End Property
+
     Public Sub New(pID As Integer, pName As String, pTags As List(Of Tag), pCats As List(Of Category))
         mID = pID
         mName = pName
         CopyTags(pTags)
         CopyCats(pCats)
     End Sub
+
+    Public Function GetTags() As List(Of Tag)
+        Dim output As New List(Of Tag)
+
+        For Each tag In mTags
+            Dim temp As New Tag(tag.ID, tag.TagValue)
+            output.Add(temp)
+        Next
+
+        Return output
+    End Function
 
     Public Sub CopyTags(pTags As List(Of Tag))
         Dim tmpTag As Tag

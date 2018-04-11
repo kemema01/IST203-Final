@@ -1,4 +1,7 @@
-﻿Public NotInheritable Class DecisionControl
+﻿Option Strict On
+Option Explicit On
+
+Public NotInheritable Class DecisionControl
     'SHARED variables
     'Private, empty constructor
     '--Maybe. Probably not.

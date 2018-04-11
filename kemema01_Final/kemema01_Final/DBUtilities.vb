@@ -42,7 +42,7 @@ Public NotInheritable Class DBUtilities
     Public Shared Function GetMembersList() As List(Of Person)
         Dim list As New List(Of Person)
 
-        SQL = "SELECT * FROM person_t ORDER BY PerName" '+ ID, Name FROM Table ORDER BY Name
+        SQL = "SELECT * FROM person_t ORDER BY PerName;" '+ ID, Name FROM Table ORDER BY Name
 
         Try
             conn = New MySqlConnection(CONNECTION_STRING)
@@ -67,7 +67,7 @@ Public NotInheritable Class DBUtilities
     Public Shared Function GetTagList() As List(Of Tag)
         Dim list As New List(Of Tag)
 
-        SQL = "SELECT * FROM tags_t ORDER BY TagValue" '+ ID, Name FROM Table ORDER BY Name
+        SQL = "SELECT * FROM tags_t ORDER BY TagValue;" '+ ID, Name FROM Table ORDER BY Name
 
         Try
             conn = New MySqlConnection(CONNECTION_STRING)
@@ -90,9 +90,9 @@ Public NotInheritable Class DBUtilities
     End Function
 
     'INSERT
-    Public Shared Function InsertMember(pPerson As Person) As Boolean
+    Public Shared Function InsertPerson(buddy As Person) As Boolean
         Dim result As Boolean = False
-        mLastStatus = "Error adding record: Member."
+        mLastStatus = "Error adding record: Person."
 
         SQL = "INSERT INTO " 'Table(Name) VALUES(@Name)
 
@@ -101,7 +101,7 @@ Public NotInheritable Class DBUtilities
             conn.Open()
 
             command = New MySqlCommand(SQL, conn)
-            command.Parameters.AddWithValue("@Name", pPerson.Name)
+            command.Parameters.AddWithValue("@Name", buddy.Name)
 
             If command.ExecuteNonQuery > 0 Then
                 result = True
@@ -115,8 +115,82 @@ Public NotInheritable Class DBUtilities
 
         Return result
     End Function
+
+    'INSERT LIKE LINES - RELATED TO SPECIFIC PERSON
+
+    'INSERT DISLIKE LINES - RELATED TO SPECIFIC PERSON
+
+    Public Shared Function InsertRestaurant(rest As Restaurant) As Boolean
+        Dim result As Boolean = False
+        mLastStatus = "Error adding record: Restaurant."
+
+        SQL = "INSERT INTO " 'Table(Name) VALUES(@Name)
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+
+            command = New MySqlCommand(SQL, conn)
+            command.Parameters.AddWithValue("@Name", rest.Name)
+
+            If command.ExecuteNonQuery > 0 Then
+                result = True
+                mLastStatus = "Record successfully added: Restaurant."
+            End If
+        Catch ex As Exception
+            mLastStatus += " " + ex.Message
+        Finally
+            conn.Close()
+        End Try
+
+        Return result
+    End Function
+
+    'INSERT: TAG LINES
+    Public Function InsertTagLines(rest As Restaurant) As Boolean
+        Dim result As Boolean = False
+        mLastStatus = "Error adding record: Tag Line(s)."
+
+        SQL = "INSERT INTO tag_line_t (RestID, TagID) VALUES "
+
+        Dim tempList As List(Of Tag) = rest.GetTags
+
+        For i As Integer = 0 To tempList.Count - 1 Step 1
+            SQL += "(" + rest.ID.ToString + ", " + tempList(i).ID.ToString + ")"
+            If i < tempList.Count - 1 Then
+                SQL += ", "
+            Else
+                SQL += ";"
+            End If
+        Next
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+            'TODO FIX COMMAND SEQUENCE
+            command = New MySqlCommand(SQL, conn)
+            command.Parameters.AddWithValue("@Name", rest.Name)
+
+            If command.ExecuteNonQuery > 0 Then
+                result = True
+                mLastStatus = "Record successfully added: Tag Line(s)."
+            End If
+        Catch ex As Exception
+            mLastStatus += " " + ex.Message
+        Finally
+            conn.Close()
+        End Try
+        Return result
+    End Function
+    'INSERT: HISTORY ENTRY
+    'INSERT: ATTENDANCE ENTRY - WHO WAS PRESENT AT GIVEN HISTORY ENTRY
+
     'UPDATE
+    'PERSON
+    'RESTAURANT
 
     'DELETE
+    'PERSON /LIKE /DISLIKE LINES
+    'RESTAURANT / TAG LINES
 
 End Class
