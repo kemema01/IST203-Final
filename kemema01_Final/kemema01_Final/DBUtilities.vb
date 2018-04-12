@@ -189,8 +189,111 @@ Public NotInheritable Class DBUtilities
     'PERSON
     'RESTAURANT
 
-    'DELETE
-    'PERSON /LIKE /DISLIKE LINES
-    'RESTAURANT / TAG LINES
+    'DELETE:
+    'Person
+    Public Shared Function DeletePerson(buddy As Person) As Boolean
+        Dim result As Boolean = False
+        mLastStatus = "Error removing record: Person."
+
+        SQL = "DELETE FROM person_t WHERE PerID = @PerID;"
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+
+            command = New MySqlCommand(SQL, conn)
+            command.Parameters.AddWithValue("@PerID", buddy.ID)
+
+            If command.ExecuteNonQuery > 0 Then
+                result = True
+                mLastStatus = "Record successfully removed: Person."
+            End If
+        Catch ex As Exception
+            mLastStatus += " " + ex.Message
+        Finally
+            conn.Close()
+        End Try
+
+        Return result
+    End Function
+    'Like Lines
+    Public Shared Function DeleteLikeLines(buddy As Person) As Boolean
+        Dim result As Boolean = False
+        mLastStatus = "Error removing record: Like Lines - " + buddy.Name + "."
+
+        SQL = "DELETE FROM like_line_t WHERE PerID = @PerID;"
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+
+            command = New MySqlCommand(SQL, conn)
+            command.Parameters.AddWithValue("@PerID", buddy.ID)
+
+            If command.ExecuteNonQuery > 0 Then
+                result = True
+                mLastStatus = "Record successfully removed: Like Lines - " + buddy.Name + "."
+            End If
+        Catch ex As Exception
+            mLastStatus += " " + ex.Message
+        Finally
+            conn.Close()
+        End Try
+
+        Return result
+    End Function
+    'Dislike Lines
+    Public Shared Function DeleteDislikeLines(buddy As Person) As Boolean
+        Dim result As Boolean = False
+        mLastStatus = "Error removing record: Dislike Lines - " + buddy.Name + "."
+
+        SQL = "DELETE FROM dislike_line_t WHERE PerID = @PerID;"
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+
+            command = New MySqlCommand(SQL, conn)
+            command.Parameters.AddWithValue("@PerID", buddy.ID)
+
+            If command.ExecuteNonQuery > 0 Then
+                result = True
+                mLastStatus = "Record successfully removed: Dislike Lines - " + buddy.Name + "."
+            End If
+        Catch ex As Exception
+            mLastStatus += " " + ex.Message
+        Finally
+            conn.Close()
+        End Try
+
+        Return result
+    End Function
+    'RESTAURANT
+    Public Shared Function DeleteRestaurant(rest As Restaurant) As Boolean
+        Dim result As Boolean = False
+        mLastStatus = "Error removing record: Restaurant"
+
+        SQL = "DELETE FROM restaurant_t WHERE RestID = @RestID;"
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+
+            command = New MySqlCommand(SQL, conn)
+            command.Parameters.AddWithValue("@RestID", rest.ID)
+
+            If command.ExecuteNonQuery > 0 Then
+                result = True
+                mLastStatus = "Record successfully removed: Restaurant."
+            End If
+        Catch ex As Exception
+            mLastStatus += " " + ex.Message
+        Finally
+            conn.Close()
+        End Try
+
+        Return result
+    End Function
+    ' / TAG LINES
 
 End Class
