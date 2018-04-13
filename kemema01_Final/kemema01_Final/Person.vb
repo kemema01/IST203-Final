@@ -18,10 +18,57 @@ Public Class Person
         End Set
     End Property
 
-    Public ReadOnly Property ID As Integer
+    Public Property ID As Integer
         Get
             Return mID
         End Get
+        Set(value As Integer)
+            mID = value
+        End Set
+    End Property
+
+    Public Property Likes As List(Of Tag)
+        Get
+            Dim temp As Tag
+            Dim tempList As New List(Of Tag)
+            For Each descriptor In mLikes
+                temp = New Tag(descriptor)
+                tempList.Add(temp)
+                temp = Nothing
+            Next
+            Return tempList
+        End Get
+        Set(value As List(Of Tag))
+            mLikes.Clear()
+            Dim temp As Tag
+            For Each descriptor In value
+                temp = New Tag(descriptor)
+                mLikes.Add(temp)
+                temp = Nothing
+            Next
+        End Set
+    End Property
+
+    Public Property Disikes As List(Of Tag)
+        Get
+            Dim temp As Tag
+            Dim tempList As New List(Of Tag)
+            For Each descriptor In mDislikes
+                temp = New Tag(descriptor)
+                tempList.Add(temp)
+                temp = Nothing
+            Next
+            Return tempList
+        End Get
+        Set(value As List(Of Tag))
+            mDislikes.Clear()
+            Dim temp As Tag
+            For Each descriptor In value
+                temp = New Tag(descriptor)
+                mDislikes.Add(temp)
+                temp = Nothing
+            Next
+        End Set
     End Property
 
     Public Sub New(pID As Integer, pName As String)

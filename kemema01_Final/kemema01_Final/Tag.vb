@@ -26,6 +26,11 @@ Public Class Tag
         mTagValue = pTagValue
     End Sub
 
+    Public Sub New(other As Tag)
+        mID = other.ID
+        mTagValue = other.TagValue
+    End Sub
+
     Public Overrides Function Equals(obj As Object) As Boolean
         Dim result As Boolean = False
         If TypeOf obj Is Tag Then

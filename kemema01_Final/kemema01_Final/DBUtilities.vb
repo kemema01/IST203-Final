@@ -117,9 +117,76 @@ Public NotInheritable Class DBUtilities
     End Function
 
     'INSERT LIKE LINES - RELATED TO SPECIFIC PERSON
+    Public Shared Function InsertLikeLines(buddy As Person) As Boolean
+        Dim result As Boolean = False
+        mLastStatus = "Error adding record: Like Lines - " + buddy.Name + "."
+
+        SQL = "INSERT INTO Like_line_t (PerID, TagID) VALUES "
+
+        For Each descriptor In buddy.Likes
+            SQL += "(" + buddy.ID.ToString + ", " + descriptor.ID.ToString + ")"
+            If buddy.Likes.IndexOf(descriptor) < buddy.Likes.Count - 1 Then
+                SQL += ", "
+            Else
+                SQL += ";"
+            End If
+        Next
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+
+            command = New MySqlCommand(SQL, conn)
+            command.Parameters.AddWithValue("@Name", buddy.Name)
+
+            If command.ExecuteNonQuery > 0 Then
+                result = True
+                mLastStatus = "Record successfully added: Like Lines - " + buddy.Name + "."
+            End If
+        Catch ex As Exception
+            mLastStatus += " " + ex.Message
+        Finally
+            conn.Close()
+        End Try
+
+        Return result
+    End Function
 
     'INSERT DISLIKE LINES - RELATED TO SPECIFIC PERSON
+    Public Shared Function InsertDislikeLines(buddy As Person) As Boolean
+        Dim result As Boolean = False
+        mLastStatus = "Error adding record: Disike Lines - " + buddy.Name + "."
 
+        SQL = "INSERT INTO Dislike_line_t (PerID, TagID) VALUES "
+
+        For Each descriptor In buddy.Likes
+            SQL += "(" + buddy.ID.ToString + ", " + descriptor.ID.ToString + ")"
+            If buddy.Likes.IndexOf(descriptor) < buddy.Likes.Count - 1 Then
+                SQL += ", "
+            Else
+                SQL += ";"
+            End If
+        Next
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+
+            command = New MySqlCommand(SQL, conn)
+            command.Parameters.AddWithValue("@Name", buddy.Name)
+
+            If command.ExecuteNonQuery > 0 Then
+                result = True
+                mLastStatus = "Record successfully added: Dislike Lines - " + buddy.Name + "."
+            End If
+        Catch ex As Exception
+            mLastStatus += " " + ex.Message
+        Finally
+            conn.Close()
+        End Try
+
+        Return result
+    End Function
     Public Shared Function InsertRestaurant(rest As Restaurant) As Boolean
         Dim result As Boolean = False
         mLastStatus = "Error adding record: Restaurant."
@@ -149,7 +216,7 @@ Public NotInheritable Class DBUtilities
     'INSERT: TAG LINES
     Public Function InsertTagLines(rest As Restaurant) As Boolean
         Dim result As Boolean = False
-        mLastStatus = "Error adding record: Tag Line(s)."
+        mLastStatus = "Error adding record: Tag Line(s) - " + rest.Name + "."
 
         SQL = "INSERT INTO tag_line_t (RestID, TagID) VALUES "
 
@@ -169,7 +236,8 @@ Public NotInheritable Class DBUtilities
             conn.Open()
             'TODO FIX COMMAND SEQUENCE
             command = New MySqlCommand(SQL, conn)
-            command.Parameters.AddWithValue("@Name", rest.Name)
+            'command.Parameters.AddWithValue("@Name", rest.Name)
+
 
             If command.ExecuteNonQuery > 0 Then
                 result = True
