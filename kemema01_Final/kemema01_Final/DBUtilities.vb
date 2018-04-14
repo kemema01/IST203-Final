@@ -320,7 +320,7 @@ Public NotInheritable Class DBUtilities
     End Function
 
     'INSERT: TAG LINES
-    Public Function InsertTagLines(rest As Restaurant) As Boolean
+    Public Shared Function InsertTagLines(rest As Restaurant) As Boolean
         Dim result As Boolean = False
         mLastStatus = "Error adding record: Tag Line(s) - " + rest.Name + "."
 
@@ -357,6 +357,31 @@ Public NotInheritable Class DBUtilities
         Return result
     End Function
     'INSERT: HISTORY ENTRY
+    Public Shared Function InsertHistoryEntry(rest As Restaurant) As Boolean
+        Dim result As Boolean = False
+        mLastStatus = "Error adding record: History Entry."
+
+        SQL = "INSERT INTO history_entry_t (EntryDate, RestID) VALUES (CURDATE(), @RestID);"
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+
+            command = New MySqlCommand(SQL, conn)
+            command.Parameters.AddWithValue("@RestID", rest.ID)
+
+            If command.ExecuteNonQuery > 0 Then
+                result = True
+                mLastStatus = "Record successfully added: History Entry."
+            End If
+        Catch ex As Exception
+            mLastStatus += " " + ex.Message
+        Finally
+            conn.Close()
+        End Try
+
+        Return result
+    End Function
     'INSERT: ATTENDANCE ENTRY - WHO WAS PRESENT AT GIVEN HISTORY ENTRY
 
     'UPDATE
