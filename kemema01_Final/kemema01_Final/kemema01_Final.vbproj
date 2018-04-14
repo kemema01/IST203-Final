@@ -146,11 +146,17 @@
     </Compile>
     <Compile Include="Person.vb" />
     <Compile Include="Restaurant.vb" />
-    <Compile Include="Tag.vb" />
-    <Compile Include="WhatSoundsGoodForm.Designer.vb">
-      <DependentUpon>WhatSoundsGoodForm.vb</DependentUpon>
+    <Compile Include="SoundsBad.Designer.vb">
+      <DependentUpon>SoundsBad.vb</DependentUpon>
     </Compile>
-    <Compile Include="WhatSoundsGoodForm.vb">
+    <Compile Include="SoundsBad.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tag.vb" />
+    <Compile Include="SoundsGoodForm.Designer.vb">
+      <DependentUpon>SoundsGoodForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SoundsGoodForm.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -170,8 +176,11 @@
     <EmbeddedResource Include="OptionsForm.resx">
       <DependentUpon>OptionsForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WhatSoundsGoodForm.resx">
-      <DependentUpon>WhatSoundsGoodForm.vb</DependentUpon>
+    <EmbeddedResource Include="SoundsBad.resx">
+      <DependentUpon>SoundsBad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SoundsGoodForm.resx">
+      <DependentUpon>SoundsGoodForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

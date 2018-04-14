@@ -64,6 +64,32 @@ Public NotInheritable Class DBUtilities
         Return list
     End Function
 
+    Public Shared Function GetRestList() As List(Of Restaurant)
+        Dim list As New List(Of Restaurant)
+
+        SQL = "SELECT * FROM restaurant_t ORDER BY RestName;" '+ ID, Name FROM Table ORDER BY Name
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+            command = New MySqlCommand(SQL, conn)
+            reader = command.ExecuteReader
+
+            While (reader.Read)
+                Dim ID As Integer = reader.GetInt32(0)
+                Dim name As String = reader.GetString(1)
+                Dim cost As Integer = reader.GetInt32(2)
+                Dim temp As New Restaurant(ID, name, cost)
+                list.Add(temp)
+            End While
+        Catch ex As Exception
+            list = Nothing
+        Finally
+            conn.Close()
+        End Try
+        Return list
+    End Function
+
     Public Shared Function GetTagList() As List(Of Tag)
         Dim list As New List(Of Tag)
 
@@ -87,6 +113,44 @@ Public NotInheritable Class DBUtilities
             conn.Close()
         End Try
         Return list
+    End Function
+
+    Public Shared Function CountLikes(buddy As Person) As Integer
+        Dim result As Integer
+
+        SQL = "SELECT COUNT(TagID) FROM Like_line_t WHERE PerID = " + buddy.ID.ToString()
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+            command = New MySqlCommand(SQL, conn)
+            result = CInt(command.ExecuteScalar)
+
+        Catch ex As Exception
+            result = Nothing
+        Finally
+            conn.Close()
+        End Try
+        Return result
+    End Function
+
+    Public Shared Function CountDislikes(buddy As Person) As Integer
+        Dim result As Integer
+
+        SQL = "SELECT COUNT(TagID) FROM Dislike_line_t WHERE PerID = " + buddy.ID.ToString()
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+            command = New MySqlCommand(SQL, conn)
+            result = CInt(command.ExecuteScalar)
+
+        Catch ex As Exception
+            result = Nothing
+        Finally
+            conn.Close()
+        End Try
+        Return result
     End Function
 
     'INSERT
@@ -120,6 +184,10 @@ Public NotInheritable Class DBUtilities
     Public Shared Function InsertLikeLines(buddy As Person) As Boolean
         Dim result As Boolean = False
         mLastStatus = "Error adding record: Like Lines - " + buddy.Name + "."
+
+        'If CountLikes(buddy) > 0 Then
+        '    DeleteLikeLines(buddy)
+        'End If
 
         SQL = "INSERT INTO Like_line_t (PerID, TagID) VALUES "
 
@@ -157,6 +225,10 @@ Public NotInheritable Class DBUtilities
         Dim result As Boolean = False
         mLastStatus = "Error adding record: Disike Lines - " + buddy.Name + "."
 
+        'If CountDislikes(buddy) > 0 Then
+        '    DeleteDislikeLines(buddy)
+        'End If
+
         SQL = "INSERT INTO Dislike_line_t (PerID, TagID) VALUES "
 
         For Each descriptor In buddy.Likes
@@ -191,14 +263,15 @@ Public NotInheritable Class DBUtilities
         Dim result As Boolean = False
         mLastStatus = "Error adding record: Restaurant."
 
-        SQL = "INSERT INTO " 'Table(Name) VALUES(@Name)
+        SQL = "INSERT INTO restaurant_t (RestName, RestPrice) VALUES (@RestName, @RestPrice);" 'Table(Name) VALUES(@Name)
 
         Try
             conn = New MySqlConnection(CONNECTION_STRING)
             conn.Open()
 
             command = New MySqlCommand(SQL, conn)
-            command.Parameters.AddWithValue("@Name", rest.Name)
+            command.Parameters.AddWithValue("@RestName", rest.Name)
+            command.Parameters.AddWithValue("RestPrice", rest.Cost)
 
             If command.ExecuteNonQuery > 0 Then
                 result = True

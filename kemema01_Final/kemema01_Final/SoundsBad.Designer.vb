@@ -23,42 +23,24 @@ Partial Class WhatSoundsGoodForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.lstAllTags = New System.Windows.Forms.ListBox()
-        Me.lstDesiredTags = New System.Windows.Forms.ListBox()
         Me.btnReset = New System.Windows.Forms.Button()
         Me.btnContinue = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnRemove = New System.Windows.Forms.Button()
         Me.btnAdd = New System.Windows.Forms.Button()
-        Me.grpDesired = New System.Windows.Forms.GroupBox()
-        Me.grpAllTags = New System.Windows.Forms.GroupBox()
+        Me.grpTags = New System.Windows.Forms.GroupBox()
+        Me.grpRest = New System.Windows.Forms.GroupBox()
+        Me.clstRest = New System.Windows.Forms.CheckedListBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.chkDineIn = New System.Windows.Forms.CheckBox()
         Me.chkCarryOut = New System.Windows.Forms.CheckBox()
         Me.chkDelivery = New System.Windows.Forms.CheckBox()
         Me.errprov = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.grpDesired.SuspendLayout()
-        Me.grpAllTags.SuspendLayout()
+        Me.clstTags = New System.Windows.Forms.CheckedListBox()
+        Me.grpTags.SuspendLayout()
+        Me.grpRest.SuspendLayout()
         CType(Me.errprov, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'lstAllTags
-        '
-        Me.lstAllTags.FormattingEnabled = True
-        Me.lstAllTags.ItemHeight = 16
-        Me.lstAllTags.Location = New System.Drawing.Point(6, 21)
-        Me.lstAllTags.Name = "lstAllTags"
-        Me.lstAllTags.Size = New System.Drawing.Size(188, 164)
-        Me.lstAllTags.TabIndex = 0
-        '
-        'lstDesiredTags
-        '
-        Me.lstDesiredTags.FormattingEnabled = True
-        Me.lstDesiredTags.ItemHeight = 16
-        Me.lstDesiredTags.Location = New System.Drawing.Point(6, 21)
-        Me.lstDesiredTags.Name = "lstDesiredTags"
-        Me.lstDesiredTags.Size = New System.Drawing.Size(188, 164)
-        Me.lstDesiredTags.TabIndex = 1
         '
         'btnReset
         '
@@ -105,25 +87,33 @@ Partial Class WhatSoundsGoodForm
         Me.btnAdd.Text = "Add >"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
-        'grpDesired
+        'grpTags
         '
-        Me.grpDesired.Controls.Add(Me.lstDesiredTags)
-        Me.grpDesired.Location = New System.Drawing.Point(218, 80)
-        Me.grpDesired.Name = "grpDesired"
-        Me.grpDesired.Size = New System.Drawing.Size(200, 192)
-        Me.grpDesired.TabIndex = 4
-        Me.grpDesired.TabStop = False
-        Me.grpDesired.Text = "Desired Tags"
+        Me.grpTags.Controls.Add(Me.clstTags)
+        Me.grpTags.Location = New System.Drawing.Point(218, 80)
+        Me.grpTags.Name = "grpTags"
+        Me.grpTags.Size = New System.Drawing.Size(200, 192)
+        Me.grpTags.TabIndex = 4
+        Me.grpTags.TabStop = False
+        Me.grpTags.Text = "Tags"
         '
-        'grpAllTags
+        'grpRest
         '
-        Me.grpAllTags.Controls.Add(Me.lstAllTags)
-        Me.grpAllTags.Location = New System.Drawing.Point(12, 80)
-        Me.grpAllTags.Name = "grpAllTags"
-        Me.grpAllTags.Size = New System.Drawing.Size(200, 192)
-        Me.grpAllTags.TabIndex = 3
-        Me.grpAllTags.TabStop = False
-        Me.grpAllTags.Text = "All Tags"
+        Me.grpRest.Controls.Add(Me.clstRest)
+        Me.grpRest.Location = New System.Drawing.Point(12, 80)
+        Me.grpRest.Name = "grpRest"
+        Me.grpRest.Size = New System.Drawing.Size(200, 192)
+        Me.grpRest.TabIndex = 3
+        Me.grpRest.TabStop = False
+        Me.grpRest.Text = "Restaurants"
+        '
+        'clstRest
+        '
+        Me.clstRest.FormattingEnabled = True
+        Me.clstRest.Location = New System.Drawing.Point(6, 21)
+        Me.clstRest.Name = "clstRest"
+        Me.clstRest.Size = New System.Drawing.Size(188, 157)
+        Me.clstRest.TabIndex = 0
         '
         'Label1
         '
@@ -132,7 +122,7 @@ Partial Class WhatSoundsGoodForm
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(406, 26)
         Me.Label1.TabIndex = 10
-        Me.Label1.Text = "Next, The Decider needs to know what you're hungry for."
+        Me.Label1.Text = "The Decider needs to know what to avoid."
         '
         'chkDineIn
         '
@@ -168,6 +158,14 @@ Partial Class WhatSoundsGoodForm
         '
         Me.errprov.ContainerControl = Me
         '
+        'clstTags
+        '
+        Me.clstTags.FormattingEnabled = True
+        Me.clstTags.Location = New System.Drawing.Point(6, 21)
+        Me.clstTags.Name = "clstTags"
+        Me.clstTags.Size = New System.Drawing.Size(188, 157)
+        Me.clstTags.TabIndex = 1
+        '
         'WhatSoundsGoodForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -181,8 +179,8 @@ Partial Class WhatSoundsGoodForm
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnRemove)
         Me.Controls.Add(Me.btnAdd)
-        Me.Controls.Add(Me.grpDesired)
-        Me.Controls.Add(Me.grpAllTags)
+        Me.Controls.Add(Me.grpTags)
+        Me.Controls.Add(Me.grpRest)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.MaximizeBox = False
@@ -190,27 +188,26 @@ Partial Class WhatSoundsGoodForm
         Me.Name = "WhatSoundsGoodForm"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "WhatSoundsGoodForm"
-        Me.grpDesired.ResumeLayout(False)
-        Me.grpAllTags.ResumeLayout(False)
+        Me.Text = "What sounds bad?"
+        Me.grpTags.ResumeLayout(False)
+        Me.grpRest.ResumeLayout(False)
         CType(Me.errprov, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents lstAllTags As ListBox
-    Friend WithEvents lstDesiredTags As ListBox
     Friend WithEvents btnReset As Button
     Friend WithEvents btnContinue As Button
     Friend WithEvents btnCancel As Button
     Friend WithEvents btnRemove As Button
     Friend WithEvents btnAdd As Button
-    Friend WithEvents grpDesired As GroupBox
-    Friend WithEvents grpAllTags As GroupBox
+    Friend WithEvents grpTags As GroupBox
+    Friend WithEvents grpRest As GroupBox
     Friend WithEvents Label1 As Label
     Friend WithEvents chkDineIn As CheckBox
     Friend WithEvents chkCarryOut As CheckBox
     Friend WithEvents chkDelivery As CheckBox
     Friend WithEvents errprov As ErrorProvider
+    Friend WithEvents clstRest As CheckedListBox
+    Friend WithEvents clstTags As CheckedListBox
 End Class

@@ -7,7 +7,7 @@ Public Class MainForm
     Private Sub btnBegin_Click(sender As Object, e As EventArgs) Handles btnBegin.Click
         AttendanceForm.ShowDialog()
         'maybe dump progress text somewhere?
-        WhatSoundsGoodForm.ShowDialog()
+        SoundsGoodForm.ShowDialog()
 
     End Sub
 

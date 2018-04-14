@@ -1,7 +1,7 @@
 ﻿Option Strict On
 Option Explicit On
 'TODO HANDLE CHECKBOXES
-Public Class WhatSoundsGoodForm
+Public Class SoundsGoodForm
 
     Private Sub WhatSoundsGoodForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'main decision progress

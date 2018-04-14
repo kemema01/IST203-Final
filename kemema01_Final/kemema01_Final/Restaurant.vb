@@ -9,7 +9,10 @@ Public Class Restaurant
     Private mID As Integer
     Private mName As String
     Private mTags As List(Of Tag)
-    Private mCategories As List(Of Category)
+    Private mCost As Integer
+    Private mDineIn As Boolean
+    Private mCarryOut As Boolean
+    Private mDelivery As Boolean
 
     Public Property Name As String
         Get
@@ -29,11 +32,22 @@ Public Class Restaurant
         End Set
     End Property
 
-    Public Sub New(pID As Integer, pName As String, pTags As List(Of Tag), pCats As List(Of Category))
+    Public Property Cost As Integer
+        Get
+            Return mCost
+        End Get
+        Set(value As Integer)
+            mCost = value
+        End Set
+    End Property
+
+    Public Sub New(pID As Integer, pName As String, pTags As List(Of Tag), pCost As Integer, pDineIn As Boolean,
+                   pCarryOut As Boolean, pDelivery As Boolean, pCats As List(Of Category))
         mID = pID
         mName = pName
+        mCost = pCost
         CopyTags(pTags)
-        CopyCats(pCats)
+        'CopyCats(pCats)
     End Sub
 
     Public Function GetTags() As List(Of Tag)
@@ -57,15 +71,15 @@ Public Class Restaurant
         Next
     End Sub
 
-    Public Sub CopyCats(pCats As List(Of Category))
-        Dim tmpCat As Category
+    'Public Sub CopyCats(pCats As List(Of Category))
+    '    Dim tmpCat As Category
 
-        For Each cat In pCats
-            tmpCat = New Category(cat.ID, cat.CatValue)
-            mCategories.Add(tmpCat)
-            tmpCat = Nothing
-        Next
-    End Sub
+    '    For Each cat In pCats
+    '        tmpCat = New Category(cat.ID, cat.CatValue)
+    '        mCategories.Add(tmpCat)
+    '        tmpCat = Nothing
+    '    Next
+    'End Sub
 
     Public Function CompareTo(other As Restaurant) As Integer Implements IComparable(Of Restaurant).CompareTo
         Dim result As Integer = Me.mID.CompareTo(other.mID)
