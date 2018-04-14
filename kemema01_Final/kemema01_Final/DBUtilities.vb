@@ -79,7 +79,10 @@ Public NotInheritable Class DBUtilities
                 Dim ID As Integer = reader.GetInt32(0)
                 Dim name As String = reader.GetString(1)
                 Dim cost As Integer = reader.GetInt32(2)
-                Dim temp As New Restaurant(ID, name, cost)
+                Dim dineIn As Boolean = reader.GetBoolean(3)
+                Dim carryOut As Boolean = reader.GetBoolean(4)
+                Dim delivery As Boolean = reader.GetBoolean(5)
+                Dim temp As New Restaurant(ID, name, cost, dineIn, carryOut, delivery)
                 list.Add(temp)
             End While
         Catch ex As Exception
@@ -87,6 +90,10 @@ Public NotInheritable Class DBUtilities
         Finally
             conn.Close()
         End Try
+
+        For Each rest In list
+            rest.CopyTags(GetRestTagLines(rest))
+        Next
         Return list
     End Function
 
@@ -105,6 +112,32 @@ Public NotInheritable Class DBUtilities
                 Dim ID As Integer = reader.GetInt32(0)
                 Dim name As String = reader.GetString(1)
                 Dim temp As New Tag(ID, name)
+                list.Add(temp)
+            End While
+        Catch ex As Exception
+            list = Nothing
+        Finally
+            conn.Close()
+        End Try
+        Return list
+    End Function
+
+    Public Shared Function GetRestTagLines(rest As Restaurant) As List(Of Tag)
+        Dim list As New List(Of Tag)
+
+        SQL = "SELECT TagID, TagValue FROM tag_line_t, tags_t WHERE RestID = " + rest.ID.ToString() +
+            " AND tag_line_t.TagID = tags_t.TagID ORDER BY TagValue;"
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+            command = New MySqlCommand(SQL, conn)
+            reader = command.ExecuteReader
+
+            While (reader.Read)
+                Dim ID As Integer = reader.GetInt32(0)
+                Dim tagValue As String = reader.GetString(1)
+                Dim temp As New Tag(ID, tagValue)
                 list.Add(temp)
             End While
         Catch ex As Exception

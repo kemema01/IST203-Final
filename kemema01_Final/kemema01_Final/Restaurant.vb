@@ -41,13 +41,15 @@ Public Class Restaurant
         End Set
     End Property
 
-    Public Sub New(pID As Integer, pName As String, pTags As List(Of Tag), pCost As Integer, pDineIn As Boolean,
-                   pCarryOut As Boolean, pDelivery As Boolean, pCats As List(Of Category))
+    Public Sub New(pID As Integer, pName As String, pCost As Integer, pDineIn As Boolean,
+                   pCarryOut As Boolean, pDelivery As Boolean)
         mID = pID
         mName = pName
         mCost = pCost
-        CopyTags(pTags)
-        'CopyCats(pCats)
+        mDineIn = pDineIn
+        mCarryOut = pCarryOut
+        mDelivery = pDelivery
+
     End Sub
 
     Public Function GetTags() As List(Of Tag)
