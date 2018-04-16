@@ -383,6 +383,38 @@ Public NotInheritable Class DBUtilities
         Return result
     End Function
     'INSERT: ATTENDANCE ENTRY - WHO WAS PRESENT AT GIVEN HISTORY ENTRY
+    Public Shared Function InsertAttendanceEntries(list As List(Of Person), entryID As Integer) As Boolean
+        Dim result As Boolean = False
+        mLastStatus = "Error adding records: History Entry - Attendance."
+
+        SQL = "INSERT INTO attendance_line_t (PerID, EntryID) VALUES "
+
+        For Each buddy In list
+            SQL += "(" + buddy.ID.ToString() + "," + entryID.ToString() + ")"
+            If list.IndexOf(buddy) < list.Count - 1 Then
+                SQL += ", "
+            Else
+                SQL += ";"
+            End If
+        Next
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+
+            command = New MySqlCommand(SQL, conn)
+
+            If command.ExecuteNonQuery > 0 Then
+                result = True
+                mLastStatus = "Record successfully added: History Entry - Attendance."
+            End If
+        Catch ex As Exception
+            mLastStatus += " " + ex.Message
+        Finally
+            conn.Close()
+        End Try
+
+        Return result
+    End Function
 
     'UPDATE
     'PERSON
