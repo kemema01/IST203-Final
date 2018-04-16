@@ -84,7 +84,7 @@ Public Class Restaurant
     'End Sub
 
     Public Function CompareTo(other As Restaurant) As Integer Implements IComparable(Of Restaurant).CompareTo
-        Dim result As Integer = Me.mID.CompareTo(other.mID)
+        Dim result As Integer = Me.ID.CompareTo(other.ID)
         If result = 0 Then
             result = Me.Name.CompareTo(other.Name)
         End If

@@ -148,6 +148,66 @@ Public NotInheritable Class DBUtilities
         Return list
     End Function
 
+    Public Shared Function GetHistoryEntries() As List(Of HistoryEntry)
+        Dim list As New List(Of HistoryEntry)
+
+        SQL = "SELECT EntryID, EntryDate, RestID, RestName " +
+            "FROM history_entry_t, restaurant_t " +
+            "WHERE history_entry_t.RestID = restaurant_t.RestID " +
+            "ORDER BY EntryDate DESC;"
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+            command = New MySqlCommand(SQL, conn)
+            reader = command.ExecuteReader
+
+            While reader.Read
+                Dim EntryID As Integer = reader.GetInt32(0)
+                Dim EntryDate As Date = reader.GetDateTime(1)
+                Dim RestID As Integer = reader.GetInt32(2)
+                Dim RestName As String = reader.GetString(3)
+                Dim temp As New HistoryEntry(EntryID, RestID, RestName, EntryDate)
+            End While
+        Catch ex As Exception
+            list = Nothing
+        Finally
+            conn.Close()
+        End Try
+        Return list
+    End Function
+
+    Public Shared Sub GetAttendanceLines(list As List(Of HistoryEntry))
+
+        For Each item In list
+            Dim attendance As New List(Of Person)
+            SQL = "SELECT PerID, PerName " +
+                "FROM person_t, attendance_line_t " +
+                "WHERE person_t.PerID = attendance_line_t.PerID " +
+                "AND attendence_line_t.EntryID = " + item.EntryID.ToString() + " " +
+                "ORDER BY PerName;"
+
+            Try
+                conn = New MySqlConnection(CONNECTION_STRING)
+                conn.Open()
+                command = New MySqlCommand(SQL, conn)
+                reader = command.ExecuteReader
+
+                While reader.Read
+                    Dim PerID As Integer = reader.GetInt32(0)
+                    Dim PerName As String = reader.GetString(1)
+                    Dim temp As New Person(PerID, PerName)
+                    attendance.Add(temp)
+                End While
+            Catch ex As Exception
+                attendance = Nothing
+            Finally
+                conn.Close()
+            End Try
+            item.Attendance = attendance
+        Next
+    End Sub
+
     Public Shared Function CountLikes(buddy As Person) As Integer
         Dim result As Integer
 

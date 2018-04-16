@@ -109,6 +109,7 @@
     <Compile Include="EditRestaurantsForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="HistoryEntry.vb" />
     <Compile Include="HistoryForm.Designer.vb">
       <DependentUpon>HistoryForm.vb</DependentUpon>
     </Compile>

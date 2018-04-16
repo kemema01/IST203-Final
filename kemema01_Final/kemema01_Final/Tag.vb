@@ -47,6 +47,11 @@ Public Class Tag
     End Function
 
     Public Function CompareTo(other As Tag) As Integer Implements IComparable(Of Tag).CompareTo
-        Return Me.TagValue.CompareTo(other.TagValue)
+        Dim result As Integer = Me.ID.CompareTo(other.ID)
+        If result = 0 Then
+            result = Me.TagValue.CompareTo(other.TagValue)
+        End If
+
+        Return result
     End Function
 End Class
