@@ -107,7 +107,12 @@ Public Class Person
     End Sub
 
     Public Function CompareTo(other As Person) As Integer Implements IComparable(Of Person).CompareTo
-        Return Me.Name.CompareTo(other.Name)
+        Dim result As Integer = Me.ID.CompareTo(other.ID)
+        If result = 0 Then
+            result = Me.Name.CompareTo(other.Name)
+        End If
+
+        Return result
     End Function
 
     Public Overrides Function ToString() As String
