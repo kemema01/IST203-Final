@@ -97,6 +97,7 @@ Public Class AttendanceForm
             DecisionControl.Progress = 2
         End If
 
+
         Me.Close()
     End Sub
 End Class

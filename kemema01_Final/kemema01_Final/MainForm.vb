@@ -6,9 +6,12 @@ Public Class MainForm
     'Begin decision making process.
     Private Sub btnBegin_Click(sender As Object, e As EventArgs) Handles btnBegin.Click
         AttendanceForm.ShowDialog()
+
         'maybe dump progress text somewhere?
         SoundsGoodForm.ShowDialog()
+
         SoundsBadForm.ShowDialog()
+
 
     End Sub
 

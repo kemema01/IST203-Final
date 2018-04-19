@@ -78,7 +78,7 @@ Public Class SoundsGoodForm
     Private Sub btnContinue_Click(sender As Object, e As EventArgs) Handles btnContinue.Click
         errprov.Clear()
         If lstDesiredTags.Items.Count > 0 Then
-            DecisionControl.PeoplePresentList.Clear()
+            DecisionControl.TagWantedList.Clear()
             For Each item As Tag In lstDesiredTags.Items
                 DecisionControl.TagWantedList.Add(item)
             Next
