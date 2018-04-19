@@ -8,6 +8,7 @@ Public Class MainForm
         AttendanceForm.ShowDialog()
         'maybe dump progress text somewhere?
         SoundsGoodForm.ShowDialog()
+        SoundsBadForm.ShowDialog()
 
     End Sub
 

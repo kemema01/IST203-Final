@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class WhatSoundsGoodForm
+Partial Class SoundsBadForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -26,17 +26,12 @@ Partial Class WhatSoundsGoodForm
         Me.btnReset = New System.Windows.Forms.Button()
         Me.btnContinue = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
-        Me.btnRemove = New System.Windows.Forms.Button()
-        Me.btnAdd = New System.Windows.Forms.Button()
         Me.grpTags = New System.Windows.Forms.GroupBox()
+        Me.clstTags = New System.Windows.Forms.CheckedListBox()
         Me.grpRest = New System.Windows.Forms.GroupBox()
         Me.clstRest = New System.Windows.Forms.CheckedListBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.chkDineIn = New System.Windows.Forms.CheckBox()
-        Me.chkCarryOut = New System.Windows.Forms.CheckBox()
-        Me.chkDelivery = New System.Windows.Forms.CheckBox()
         Me.errprov = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.clstTags = New System.Windows.Forms.CheckedListBox()
         Me.grpTags.SuspendLayout()
         Me.grpRest.SuspendLayout()
         CType(Me.errprov, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -69,40 +64,30 @@ Partial Class WhatSoundsGoodForm
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
-        'btnRemove
-        '
-        Me.btnRemove.Location = New System.Drawing.Point(224, 278)
-        Me.btnRemove.Name = "btnRemove"
-        Me.btnRemove.Size = New System.Drawing.Size(100, 25)
-        Me.btnRemove.TabIndex = 6
-        Me.btnRemove.Text = "< Remove"
-        Me.btnRemove.UseVisualStyleBackColor = True
-        '
-        'btnAdd
-        '
-        Me.btnAdd.Location = New System.Drawing.Point(106, 278)
-        Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(100, 25)
-        Me.btnAdd.TabIndex = 5
-        Me.btnAdd.Text = "Add >"
-        Me.btnAdd.UseVisualStyleBackColor = True
-        '
         'grpTags
         '
         Me.grpTags.Controls.Add(Me.clstTags)
-        Me.grpTags.Location = New System.Drawing.Point(218, 80)
+        Me.grpTags.Location = New System.Drawing.Point(218, 38)
         Me.grpTags.Name = "grpTags"
-        Me.grpTags.Size = New System.Drawing.Size(200, 192)
+        Me.grpTags.Size = New System.Drawing.Size(200, 265)
         Me.grpTags.TabIndex = 4
         Me.grpTags.TabStop = False
         Me.grpTags.Text = "Tags"
         '
+        'clstTags
+        '
+        Me.clstTags.FormattingEnabled = True
+        Me.clstTags.Location = New System.Drawing.Point(6, 21)
+        Me.clstTags.Name = "clstTags"
+        Me.clstTags.Size = New System.Drawing.Size(188, 242)
+        Me.clstTags.TabIndex = 1
+        '
         'grpRest
         '
         Me.grpRest.Controls.Add(Me.clstRest)
-        Me.grpRest.Location = New System.Drawing.Point(12, 80)
+        Me.grpRest.Location = New System.Drawing.Point(12, 38)
         Me.grpRest.Name = "grpRest"
-        Me.grpRest.Size = New System.Drawing.Size(200, 192)
+        Me.grpRest.Size = New System.Drawing.Size(200, 265)
         Me.grpRest.TabIndex = 3
         Me.grpRest.TabStop = False
         Me.grpRest.Text = "Restaurants"
@@ -112,7 +97,7 @@ Partial Class WhatSoundsGoodForm
         Me.clstRest.FormattingEnabled = True
         Me.clstRest.Location = New System.Drawing.Point(6, 21)
         Me.clstRest.Name = "clstRest"
-        Me.clstRest.Size = New System.Drawing.Size(188, 157)
+        Me.clstRest.Size = New System.Drawing.Size(188, 242)
         Me.clstRest.TabIndex = 0
         '
         'Label1
@@ -124,61 +109,18 @@ Partial Class WhatSoundsGoodForm
         Me.Label1.TabIndex = 10
         Me.Label1.Text = "The Decider needs to know what to avoid."
         '
-        'chkDineIn
-        '
-        Me.chkDineIn.AutoSize = True
-        Me.chkDineIn.Location = New System.Drawing.Point(12, 53)
-        Me.chkDineIn.Name = "chkDineIn"
-        Me.chkDineIn.Size = New System.Drawing.Size(74, 21)
-        Me.chkDineIn.TabIndex = 0
-        Me.chkDineIn.Text = "Dine In"
-        Me.chkDineIn.UseVisualStyleBackColor = True
-        '
-        'chkCarryOut
-        '
-        Me.chkCarryOut.AutoSize = True
-        Me.chkCarryOut.Location = New System.Drawing.Point(318, 53)
-        Me.chkCarryOut.Name = "chkCarryOut"
-        Me.chkCarryOut.Size = New System.Drawing.Size(91, 21)
-        Me.chkCarryOut.TabIndex = 2
-        Me.chkCarryOut.Text = "Carry Out"
-        Me.chkCarryOut.UseVisualStyleBackColor = True
-        '
-        'chkDelivery
-        '
-        Me.chkDelivery.AutoSize = True
-        Me.chkDelivery.Location = New System.Drawing.Point(165, 53)
-        Me.chkDelivery.Name = "chkDelivery"
-        Me.chkDelivery.Size = New System.Drawing.Size(81, 21)
-        Me.chkDelivery.TabIndex = 1
-        Me.chkDelivery.Text = "Delivery"
-        Me.chkDelivery.UseVisualStyleBackColor = True
-        '
         'errprov
         '
         Me.errprov.ContainerControl = Me
-        '
-        'clstTags
-        '
-        Me.clstTags.FormattingEnabled = True
-        Me.clstTags.Location = New System.Drawing.Point(6, 21)
-        Me.clstTags.Name = "clstTags"
-        Me.clstTags.Size = New System.Drawing.Size(188, 157)
-        Me.clstTags.TabIndex = 1
         '
         'WhatSoundsGoodForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(432, 343)
-        Me.Controls.Add(Me.chkDelivery)
-        Me.Controls.Add(Me.chkCarryOut)
-        Me.Controls.Add(Me.chkDineIn)
         Me.Controls.Add(Me.btnReset)
         Me.Controls.Add(Me.btnContinue)
         Me.Controls.Add(Me.btnCancel)
-        Me.Controls.Add(Me.btnRemove)
-        Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.grpTags)
         Me.Controls.Add(Me.grpRest)
         Me.Controls.Add(Me.Label1)
@@ -193,20 +135,14 @@ Partial Class WhatSoundsGoodForm
         Me.grpRest.ResumeLayout(False)
         CType(Me.errprov, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents btnReset As Button
     Friend WithEvents btnContinue As Button
     Friend WithEvents btnCancel As Button
-    Friend WithEvents btnRemove As Button
-    Friend WithEvents btnAdd As Button
     Friend WithEvents grpTags As GroupBox
     Friend WithEvents grpRest As GroupBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents chkDineIn As CheckBox
-    Friend WithEvents chkCarryOut As CheckBox
-    Friend WithEvents chkDelivery As CheckBox
     Friend WithEvents errprov As ErrorProvider
     Friend WithEvents clstRest As CheckedListBox
     Friend WithEvents clstTags As CheckedListBox

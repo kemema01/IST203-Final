@@ -8,11 +8,12 @@ Public Class Restaurant
 
     Private mID As Integer
     Private mName As String
-    Private mTags As List(Of Tag)
+    Private mTags As New List(Of Tag)
     Private mCost As Integer
     Private mDineIn As Boolean
     Private mCarryOut As Boolean
     Private mDelivery As Boolean
+
 
     Public Property Name As String
         Get
@@ -82,6 +83,9 @@ Public Class Restaurant
     '        tmpCat = Nothing
     '    Next
     'End Sub
+    Public Overrides Function ToString() As String
+        Return Name
+    End Function
 
     Public Function CompareTo(other As Restaurant) As Integer Implements IComparable(Of Restaurant).CompareTo
         Dim result As Integer = Me.ID.CompareTo(other.ID)

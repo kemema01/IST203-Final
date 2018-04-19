@@ -1,14 +1,14 @@
 ﻿Option Strict On
 Option Explicit On
 'TODO HANDLE CHECKBOXES
-Public Class WhatSoundsGoodForm
+Public Class SoundsBadForm
 
     Private Sub WhatSoundsGoodForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'main decision progress
-        'If DecisionControl.Progress = 2 Then
-        '    DecisionControl.TagMasterList = DBUtilities.GetTagList()
-        '    DecisionControl.Progress = 3
-        'End If
+        If DecisionControl.Progress = 4 Then
+            DecisionControl.RestMasterList = DBUtilities.GetRestList()
+            DecisionControl.Progress = 5
+        End If
 
         'reset/load lists
         LoadLists()
@@ -22,73 +22,48 @@ Public Class WhatSoundsGoodForm
         clstTags.Items.Clear()
         clstRest.Items.Clear()
 
-        ''if dc.tagswanted has tags, add them to the local list
-        'If DecisionControl.TagWantedList.Count > 0 Then
-        '    For Each item In DecisionControl.TagWantedList
-        '        lstDesiredTags.Items.Add(item)
-        '    Next
-        'End If
-        ''load the local tagsall list - if local tagswanted contains specific items, don't add those to tagsAll
-        'If lstDesiredTags.Items.Count > 0 Then
-        '    For Each item In DecisionControl.TagMasterList
-        '        If Not lstDesiredTags.Items.Contains(item) Then
-        '            lstAllTags.Items.Add(item)
-        '        End If
-        '    Next
-        'Else
-        '    For Each item In DecisionControl.TagMasterList
-        '        lstAllTags.Items.Add(item)
-        '    Next
-        'End If
-    End Sub
+        For Each item In DecisionControl.RestMasterList
+            clstRest.Items.Add(item)
+        Next
+        For Each item In DecisionControl.TagMasterList
+            clstTags.Items.Add(item)
+        Next
 
-    'move tag from master list to wanted list
-    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        errprov.Clear()
-        If Not lstAllTags.SelectedIndex = -1 Then
-            lstDesiredTags.Items.Add(lstAllTags.SelectedItem)
-            lstAllTags.Items.Remove(lstAllTags.SelectedItem)
-        Else
-            Beep()
-            errprov.SetError(btnAdd, "Select a tag to add!")
-            Return
-        End If
-    End Sub
+        'if dc.restsoundsbad has restaurants, check them in this control
+        If DecisionControl.RestSoundsBad.Count > 0 Then
+            For Each item In clstRest.Items
+                If DecisionControl.RestSoundsBad.Contains(CType(item, Restaurant)) Then
+                    clstRest.SetItemChecked(clstRest.Items.IndexOf(item), True)
+                End If
 
-    'move tag from wanted list to master list
-    Private Sub btnRemove_Click(sender As Object, e As EventArgs) Handles btnRemove.Click
-        errprov.Clear()
-        If Not lstDesiredTags.SelectedIndex = -1 Then
-            lstAllTags.Items.Add(lstDesiredTags.SelectedItem)
-            lstDesiredTags.Items.Remove(lstDesiredTags.SelectedItem)
-        Else
-            Beep()
-            errprov.SetError(btnRemove, "Select a person to remove!")
-            Return
-        End If
-    End Sub
-
-    'reset local lists and controls
-    Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
-        errprov.Clear()
-        LoadLists()
-    End Sub
-
-    'update decisioncontrol.tagswanted
-    Private Sub btnContinue_Click(sender As Object, e As EventArgs) Handles btnContinue.Click
-        errprov.Clear()
-        If lstDesiredTags.Items.Count > 0 Then
-            DecisionControl.PeoplePresentList.Clear()
-            For Each item As Tag In lstDesiredTags.Items
-                DecisionControl.TagWantedList.Add(item)
             Next
-        Else
-            Beep()
-            errprov.SetError(btnContinue, "List can't be empty!")
-            Return
         End If
-        If DecisionControl.Progress < 4 Then
-            DecisionControl.Progress = 4
+        'if dc.tagsoundsbad has tags, check them in this control
+        If DecisionControl.TagsSoundsBad.Count > 0 Then
+            For Each item In clstTags.Items
+                If DecisionControl.TagsSoundsBad.Contains(CType(item, Tag)) Then
+                    clstTags.SetItemChecked(clstTags.Items.IndexOf(item), True)
+                End If
+            Next
+        End If
+
+    End Sub
+
+    'update decisioncontrol.restsoundsbad,tagssoundsbad
+    Private Sub btnContinue_Click(sender As Object, e As EventArgs) Handles btnContinue.Click
+
+        DecisionControl.RestSoundsBad.Clear()
+        For Each item In clstRest.CheckedItems
+            DecisionControl.RestSoundsBad.Add(CType(item, Restaurant))
+        Next
+
+        DecisionControl.TagsSoundsBad.Clear()
+        For Each item In clstTags.CheckedItems
+            DecisionControl.TagsSoundsBad.Add(CType(item, Tag))
+        Next
+
+        If DecisionControl.Progress < 5 Then
+            DecisionControl.Progress = 5
         End If
 
         Me.Close()

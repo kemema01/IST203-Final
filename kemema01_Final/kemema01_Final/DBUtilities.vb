@@ -125,8 +125,10 @@ Public NotInheritable Class DBUtilities
     Public Shared Function GetRestTagLines(rest As Restaurant) As List(Of Tag)
         Dim list As New List(Of Tag)
 
-        SQL = "SELECT TagID, TagValue FROM tag_line_t, tags_t WHERE RestID = " + rest.ID.ToString() +
-            " AND tag_line_t.TagID = tags_t.TagID ORDER BY TagValue;"
+        'SQL = "SELECT tag_line_t.TagID, tag_line_t.TagValue FROM tag_line_t, tags_t WHERE tag_line_t.RestID = " + rest.ID.ToString() +
+        '   " AND tag_line_t.TagID = tags_t.TagID ORDER BY TagValue;"
+        SQL = "SELECT t.tagid, t.tagvalue FROM tags_t t, tag_line_t WHERE t.tagid = tag_line_t.tagid AND tag_line_t.restid = " + rest.ID.ToString() +
+            " ORDER BY TagValue;"
 
         Try
             conn = New MySqlConnection(CONNECTION_STRING)
@@ -151,7 +153,7 @@ Public NotInheritable Class DBUtilities
     Public Shared Function GetHistoryEntries() As List(Of HistoryEntry)
         Dim list As New List(Of HistoryEntry)
 
-        SQL = "SELECT EntryID, EntryDate, RestID, RestName " +
+        SQL = "SELECT EntryID, EntryDate, restaurant_t.RestID, restaurant_t.RestName " +
             "FROM history_entry_t, restaurant_t " +
             "WHERE history_entry_t.RestID = restaurant_t.RestID " +
             "ORDER BY EntryDate DESC;"
@@ -168,6 +170,7 @@ Public NotInheritable Class DBUtilities
                 Dim RestID As Integer = reader.GetInt32(2)
                 Dim RestName As String = reader.GetString(3)
                 Dim temp As New HistoryEntry(EntryID, RestID, RestName, EntryDate)
+                list.Add(temp)
             End While
         Catch ex As Exception
             list = Nothing
@@ -181,10 +184,10 @@ Public NotInheritable Class DBUtilities
 
         For Each item In list
             Dim attendance As New List(Of Person)
-            SQL = "SELECT PerID, PerName " +
+            SQL = "SELECT person_t.PerID, person_t.PerName " +
                 "FROM person_t, attendance_line_t " +
                 "WHERE person_t.PerID = attendance_line_t.PerID " +
-                "AND attendence_line_t.EntryID = " + item.EntryID.ToString() + " " +
+                "AND attendance_line_t.EntryID = " + item.EntryID.ToString() + " " +
                 "ORDER BY PerName;"
 
             Try
