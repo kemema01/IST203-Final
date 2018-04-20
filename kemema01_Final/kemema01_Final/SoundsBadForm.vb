@@ -15,6 +15,42 @@ Public Class SoundsBadForm
 
         clstRest.Sorted = True
         clstTags.Sorted = True
+
+        If DecisionControl.CatGood(0) = True Then
+            chkDineIn.Checked = False
+            chkDineIn.Enabled = False
+        Else
+            chkDineIn.Enabled = True
+            If DecisionControl.CatBad(0) = True Then
+                chkDineIn.Checked = True
+            Else
+                chkDineIn.Checked = False
+            End If
+        End If
+
+        If DecisionControl.CatGood(1) = True Then
+            chkCarryOut.Checked = False
+            chkCarryOut.Enabled = False
+        Else
+            chkCarryOut.Enabled = True
+            If DecisionControl.CatBad(1) = True Then
+                chkCarryOut.Checked = True
+            Else
+                chkCarryOut.Checked = False
+            End If
+        End If
+
+        If DecisionControl.CatGood(2) = True Then
+            chkDelivery.Checked = False
+            chkDelivery.Enabled = False
+        Else
+            chkDelivery.Enabled = True
+            If DecisionControl.CatBad(2) = True Then
+                chkDelivery.Checked = True
+            Else
+                chkDelivery.Checked = False
+            End If
+        End If
     End Sub
 
     'reset and re-load local lists from decisioncontrol lists
@@ -61,6 +97,24 @@ Public Class SoundsBadForm
         For Each item In clstTags.CheckedItems
             DecisionControl.TagsSoundsBad.Add(CType(item, Tag))
         Next
+
+        If chkDineIn.Checked = True Then
+            DecisionControl.CatBad(0) = True
+        Else
+            DecisionControl.CatBad(0) = False
+        End If
+
+        If chkCarryOut.Checked = True Then
+            DecisionControl.CatBad(1) = True
+        Else
+            DecisionControl.CatBad(1) = False
+        End If
+
+        If chkDelivery.Checked = True Then
+            DecisionControl.CatBad(2) = True
+        Else
+            DecisionControl.CatBad(2) = False
+        End If
 
         If DecisionControl.Progress < 5 Then
             DecisionControl.Progress = 5

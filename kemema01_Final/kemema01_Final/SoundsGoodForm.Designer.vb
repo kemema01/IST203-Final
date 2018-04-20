@@ -37,6 +37,8 @@ Partial Class SoundsGoodForm
         Me.chkCarryOut = New System.Windows.Forms.CheckBox()
         Me.chkDelivery = New System.Windows.Forms.CheckBox()
         Me.errprov = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.btnAll = New System.Windows.Forms.Button()
+        Me.btnClear = New System.Windows.Forms.Button()
         Me.grpDesired.SuspendLayout()
         Me.grpAllTags.SuspendLayout()
         CType(Me.errprov, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -48,7 +50,7 @@ Partial Class SoundsGoodForm
         Me.lstAllTags.ItemHeight = 16
         Me.lstAllTags.Location = New System.Drawing.Point(6, 21)
         Me.lstAllTags.Name = "lstAllTags"
-        Me.lstAllTags.Size = New System.Drawing.Size(188, 164)
+        Me.lstAllTags.Size = New System.Drawing.Size(188, 180)
         Me.lstAllTags.TabIndex = 0
         '
         'lstDesiredTags
@@ -57,7 +59,7 @@ Partial Class SoundsGoodForm
         Me.lstDesiredTags.ItemHeight = 16
         Me.lstDesiredTags.Location = New System.Drawing.Point(6, 21)
         Me.lstDesiredTags.Name = "lstDesiredTags"
-        Me.lstDesiredTags.Size = New System.Drawing.Size(188, 164)
+        Me.lstDesiredTags.Size = New System.Drawing.Size(188, 180)
         Me.lstDesiredTags.TabIndex = 1
         '
         'btnReset
@@ -89,7 +91,7 @@ Partial Class SoundsGoodForm
         '
         'btnRemove
         '
-        Me.btnRemove.Location = New System.Drawing.Point(224, 278)
+        Me.btnRemove.Location = New System.Drawing.Point(218, 278)
         Me.btnRemove.Name = "btnRemove"
         Me.btnRemove.Size = New System.Drawing.Size(100, 25)
         Me.btnRemove.TabIndex = 6
@@ -98,7 +100,7 @@ Partial Class SoundsGoodForm
         '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(106, 278)
+        Me.btnAdd.Location = New System.Drawing.Point(112, 278)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(100, 25)
         Me.btnAdd.TabIndex = 5
@@ -108,9 +110,9 @@ Partial Class SoundsGoodForm
         'grpDesired
         '
         Me.grpDesired.Controls.Add(Me.lstDesiredTags)
-        Me.grpDesired.Location = New System.Drawing.Point(218, 80)
+        Me.grpDesired.Location = New System.Drawing.Point(218, 65)
         Me.grpDesired.Name = "grpDesired"
-        Me.grpDesired.Size = New System.Drawing.Size(200, 192)
+        Me.grpDesired.Size = New System.Drawing.Size(200, 207)
         Me.grpDesired.TabIndex = 4
         Me.grpDesired.TabStop = False
         Me.grpDesired.Text = "Desired Tags"
@@ -118,9 +120,9 @@ Partial Class SoundsGoodForm
         'grpAllTags
         '
         Me.grpAllTags.Controls.Add(Me.lstAllTags)
-        Me.grpAllTags.Location = New System.Drawing.Point(12, 80)
+        Me.grpAllTags.Location = New System.Drawing.Point(12, 65)
         Me.grpAllTags.Name = "grpAllTags"
-        Me.grpAllTags.Size = New System.Drawing.Size(200, 192)
+        Me.grpAllTags.Size = New System.Drawing.Size(200, 207)
         Me.grpAllTags.TabIndex = 3
         Me.grpAllTags.TabStop = False
         Me.grpAllTags.Text = "All Tags"
@@ -137,7 +139,7 @@ Partial Class SoundsGoodForm
         'chkDineIn
         '
         Me.chkDineIn.AutoSize = True
-        Me.chkDineIn.Location = New System.Drawing.Point(12, 53)
+        Me.chkDineIn.Location = New System.Drawing.Point(12, 38)
         Me.chkDineIn.Name = "chkDineIn"
         Me.chkDineIn.Size = New System.Drawing.Size(74, 21)
         Me.chkDineIn.TabIndex = 0
@@ -147,7 +149,7 @@ Partial Class SoundsGoodForm
         'chkCarryOut
         '
         Me.chkCarryOut.AutoSize = True
-        Me.chkCarryOut.Location = New System.Drawing.Point(318, 53)
+        Me.chkCarryOut.Location = New System.Drawing.Point(165, 38)
         Me.chkCarryOut.Name = "chkCarryOut"
         Me.chkCarryOut.Size = New System.Drawing.Size(91, 21)
         Me.chkCarryOut.TabIndex = 2
@@ -157,7 +159,7 @@ Partial Class SoundsGoodForm
         'chkDelivery
         '
         Me.chkDelivery.AutoSize = True
-        Me.chkDelivery.Location = New System.Drawing.Point(165, 53)
+        Me.chkDelivery.Location = New System.Drawing.Point(337, 38)
         Me.chkDelivery.Name = "chkDelivery"
         Me.chkDelivery.Size = New System.Drawing.Size(81, 21)
         Me.chkDelivery.TabIndex = 1
@@ -168,11 +170,31 @@ Partial Class SoundsGoodForm
         '
         Me.errprov.ContainerControl = Me
         '
-        'WhatSoundsGoodForm
+        'btnAll
+        '
+        Me.btnAll.Location = New System.Drawing.Point(12, 278)
+        Me.btnAll.Name = "btnAll"
+        Me.btnAll.Size = New System.Drawing.Size(100, 25)
+        Me.btnAll.TabIndex = 11
+        Me.btnAll.Text = "All >>"
+        Me.btnAll.UseVisualStyleBackColor = True
+        '
+        'btnClear
+        '
+        Me.btnClear.Location = New System.Drawing.Point(318, 278)
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(100, 25)
+        Me.btnClear.TabIndex = 12
+        Me.btnClear.Text = "<< Clear"
+        Me.btnClear.UseVisualStyleBackColor = True
+        '
+        'SoundsGoodForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(432, 343)
+        Me.Controls.Add(Me.btnClear)
+        Me.Controls.Add(Me.btnAll)
         Me.Controls.Add(Me.chkDelivery)
         Me.Controls.Add(Me.chkCarryOut)
         Me.Controls.Add(Me.chkDineIn)
@@ -187,7 +209,7 @@ Partial Class SoundsGoodForm
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "WhatSoundsGoodForm"
+        Me.Name = "SoundsGoodForm"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "WhatSoundsGoodForm"
@@ -213,4 +235,6 @@ Partial Class SoundsGoodForm
     Friend WithEvents chkCarryOut As CheckBox
     Friend WithEvents chkDelivery As CheckBox
     Friend WithEvents errprov As ErrorProvider
+    Friend WithEvents btnClear As Button
+    Friend WithEvents btnAll As Button
 End Class

@@ -32,6 +32,9 @@ Partial Class SoundsBadForm
         Me.clstRest = New System.Windows.Forms.CheckedListBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.errprov = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.chkDelivery = New System.Windows.Forms.CheckBox()
+        Me.chkCarryOut = New System.Windows.Forms.CheckBox()
+        Me.chkDineIn = New System.Windows.Forms.CheckBox()
         Me.grpTags.SuspendLayout()
         Me.grpRest.SuspendLayout()
         CType(Me.errprov, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -67,9 +70,9 @@ Partial Class SoundsBadForm
         'grpTags
         '
         Me.grpTags.Controls.Add(Me.clstTags)
-        Me.grpTags.Location = New System.Drawing.Point(218, 38)
+        Me.grpTags.Location = New System.Drawing.Point(218, 65)
         Me.grpTags.Name = "grpTags"
-        Me.grpTags.Size = New System.Drawing.Size(200, 265)
+        Me.grpTags.Size = New System.Drawing.Size(200, 238)
         Me.grpTags.TabIndex = 4
         Me.grpTags.TabStop = False
         Me.grpTags.Text = "Tags"
@@ -79,15 +82,16 @@ Partial Class SoundsBadForm
         Me.clstTags.FormattingEnabled = True
         Me.clstTags.Location = New System.Drawing.Point(6, 21)
         Me.clstTags.Name = "clstTags"
-        Me.clstTags.Size = New System.Drawing.Size(188, 242)
+        Me.clstTags.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clstTags.Size = New System.Drawing.Size(194, 208)
         Me.clstTags.TabIndex = 1
         '
         'grpRest
         '
         Me.grpRest.Controls.Add(Me.clstRest)
-        Me.grpRest.Location = New System.Drawing.Point(12, 38)
+        Me.grpRest.Location = New System.Drawing.Point(12, 65)
         Me.grpRest.Name = "grpRest"
-        Me.grpRest.Size = New System.Drawing.Size(200, 265)
+        Me.grpRest.Size = New System.Drawing.Size(200, 238)
         Me.grpRest.TabIndex = 3
         Me.grpRest.TabStop = False
         Me.grpRest.Text = "Restaurants"
@@ -95,9 +99,10 @@ Partial Class SoundsBadForm
         'clstRest
         '
         Me.clstRest.FormattingEnabled = True
-        Me.clstRest.Location = New System.Drawing.Point(6, 21)
+        Me.clstRest.Location = New System.Drawing.Point(0, 21)
         Me.clstRest.Name = "clstRest"
-        Me.clstRest.Size = New System.Drawing.Size(188, 242)
+        Me.clstRest.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clstRest.Size = New System.Drawing.Size(194, 208)
         Me.clstRest.TabIndex = 0
         '
         'Label1
@@ -113,11 +118,44 @@ Partial Class SoundsBadForm
         '
         Me.errprov.ContainerControl = Me
         '
-        'WhatSoundsGoodForm
+        'chkDelivery
+        '
+        Me.chkDelivery.AutoSize = True
+        Me.chkDelivery.Location = New System.Drawing.Point(337, 38)
+        Me.chkDelivery.Name = "chkDelivery"
+        Me.chkDelivery.Size = New System.Drawing.Size(81, 21)
+        Me.chkDelivery.TabIndex = 12
+        Me.chkDelivery.Text = "Delivery"
+        Me.chkDelivery.UseVisualStyleBackColor = True
+        '
+        'chkCarryOut
+        '
+        Me.chkCarryOut.AutoSize = True
+        Me.chkCarryOut.Location = New System.Drawing.Point(165, 38)
+        Me.chkCarryOut.Name = "chkCarryOut"
+        Me.chkCarryOut.Size = New System.Drawing.Size(91, 21)
+        Me.chkCarryOut.TabIndex = 13
+        Me.chkCarryOut.Text = "Carry Out"
+        Me.chkCarryOut.UseVisualStyleBackColor = True
+        '
+        'chkDineIn
+        '
+        Me.chkDineIn.AutoSize = True
+        Me.chkDineIn.Location = New System.Drawing.Point(12, 38)
+        Me.chkDineIn.Name = "chkDineIn"
+        Me.chkDineIn.Size = New System.Drawing.Size(74, 21)
+        Me.chkDineIn.TabIndex = 11
+        Me.chkDineIn.Text = "Dine In"
+        Me.chkDineIn.UseVisualStyleBackColor = True
+        '
+        'SoundsBadForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(432, 343)
+        Me.Controls.Add(Me.chkDelivery)
+        Me.Controls.Add(Me.chkCarryOut)
+        Me.Controls.Add(Me.chkDineIn)
         Me.Controls.Add(Me.btnReset)
         Me.Controls.Add(Me.btnContinue)
         Me.Controls.Add(Me.btnCancel)
@@ -127,7 +165,7 @@ Partial Class SoundsBadForm
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "WhatSoundsGoodForm"
+        Me.Name = "SoundsBadForm"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "What sounds bad?"
@@ -135,6 +173,7 @@ Partial Class SoundsBadForm
         Me.grpRest.ResumeLayout(False)
         CType(Me.errprov, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents btnReset As Button
@@ -146,4 +185,7 @@ Partial Class SoundsBadForm
     Friend WithEvents errprov As ErrorProvider
     Friend WithEvents clstRest As CheckedListBox
     Friend WithEvents clstTags As CheckedListBox
+    Friend WithEvents chkDelivery As CheckBox
+    Friend WithEvents chkCarryOut As CheckBox
+    Friend WithEvents chkDineIn As CheckBox
 End Class

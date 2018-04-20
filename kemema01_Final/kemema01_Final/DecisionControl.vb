@@ -13,6 +13,8 @@ Public NotInheritable Class DecisionControl
     Private Shared mRestSoundsBad As New List(Of Restaurant)
     Private Shared mTagsSoundsBad As New List(Of Tag)
     Private Shared mProgress As Integer
+    Private Shared mCategoriesGood As Boolean() = {False, False, False} 'index 0=dine in, 1=carryout, 2=delivery
+    Private Shared mCategoriesBad As Boolean() = {False, False, False} 'ditto
 
 
     Private Sub New()
@@ -103,6 +105,28 @@ Public NotInheritable Class DecisionControl
         End Get
         Set(value As List(Of Tag))
             mTagsSoundsBad = value
+        End Set
+    End Property
+
+    Public Shared Property CatGood As Boolean()
+        Get
+            Return mCategoriesGood
+        End Get
+        Set(value As Boolean())
+            For i As Integer = 0 To 2 Step 1
+                mCategoriesGood(i) = value(i)
+            Next
+        End Set
+    End Property
+
+    Public Shared Property CatBad As Boolean()
+        Get
+            Return mCategoriesBad
+        End Get
+        Set(value As Boolean())
+            For i As Integer = 0 To 2 Step 1
+                mCategoriesBad(i) = value(i)
+            Next
         End Set
     End Property
 

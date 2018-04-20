@@ -2,8 +2,8 @@
 Option Strict On
 
 Public Class AttendanceForm
-    Private peoplePresent As List(Of Person)
-    Private peopleAll As List(Of Person)
+    'Private peoplePresent As New List(Of Person)
+    'Private peopleAll As New List(Of Person)
 
     Private Sub AttendanceForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Main decision progression

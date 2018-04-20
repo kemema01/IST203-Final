@@ -87,6 +87,25 @@ Public Class SoundsGoodForm
             errprov.SetError(btnContinue, "List can't be empty!")
             Return
         End If
+
+        If chkDineIn.Checked = True Then
+            DecisionControl.CatGood(0) = True
+        Else
+            DecisionControl.CatGood(0) = False
+        End If
+
+        If chkCarryOut.Checked = True Then
+            DecisionControl.CatGood(1) = True
+        Else
+            DecisionControl.CatGood(1) = False
+        End If
+
+        If chkDelivery.Checked = True Then
+            DecisionControl.CatGood(2) = True
+        Else
+            DecisionControl.CatGood(2) = False
+        End If
+
         If DecisionControl.Progress < 4 Then
             DecisionControl.Progress = 4
         End If
@@ -94,4 +113,21 @@ Public Class SoundsGoodForm
         Me.Close()
     End Sub
 
+    'add all tags
+    Private Sub btnAll_Click(sender As Object, e As EventArgs) Handles btnAll.Click
+        lstAllTags.Items.Clear()
+        lstDesiredTags.Items.Clear()
+        For Each item In DecisionControl.TagMasterList
+            lstDesiredTags.Items.Add(item)
+        Next
+    End Sub
+
+    'remove all tags
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        lstAllTags.Items.Clear()
+        lstDesiredTags.Items.Clear()
+        For Each item In DecisionControl.TagMasterList
+            lstAllTags.Items.Add(item)
+        Next
+    End Sub
 End Class
