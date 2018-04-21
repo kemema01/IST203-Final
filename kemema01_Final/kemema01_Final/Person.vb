@@ -49,7 +49,7 @@ Public Class Person
         End Set
     End Property
 
-    Public Property Disikes As List(Of Tag)
+    Public Property Dislikes As List(Of Tag)
         Get
             Dim temp As Tag
             Dim tempList As New List(Of Tag)
@@ -74,12 +74,15 @@ Public Class Person
     Public Sub New(pID As Integer, pName As String)
         mID = pID
         mName = pName
-
+        mLikes = New List(Of Tag)
+        mDislikes = New List(Of Tag)
     End Sub
 
     Public Sub New(pPerson As Person)
         mID = pPerson.ID
         mName = pPerson.Name
+        mLikes = New List(Of Tag)
+        mDislikes = New List(Of Tag)
     End Sub
 
     Public Sub ImportLikes(pTags As List(Of Tag))

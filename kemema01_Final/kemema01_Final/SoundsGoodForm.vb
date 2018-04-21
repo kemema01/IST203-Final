@@ -113,21 +113,21 @@ Public Class SoundsGoodForm
         Me.Close()
     End Sub
 
-    'add all tags
-    Private Sub btnAll_Click(sender As Object, e As EventArgs) Handles btnAll.Click
-        lstAllTags.Items.Clear()
-        lstDesiredTags.Items.Clear()
-        For Each item In DecisionControl.TagMasterList
-            lstDesiredTags.Items.Add(item)
-        Next
-    End Sub
+    ''add all tags
+    'Private Sub btnAll_Click(sender As Object, e As EventArgs) Handles btnAll.Click
+    '    lstAllTags.Items.Clear()
+    '    lstDesiredTags.Items.Clear()
+    '    For Each item In DecisionControl.TagMasterList
+    '        lstDesiredTags.Items.Add(item)
+    '    Next
+    'End Sub
 
-    'remove all tags
-    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-        lstAllTags.Items.Clear()
-        lstDesiredTags.Items.Clear()
-        For Each item In DecisionControl.TagMasterList
-            lstAllTags.Items.Add(item)
-        Next
-    End Sub
+    ''remove all tags
+    'Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+    '    lstAllTags.Items.Clear()
+    '    lstDesiredTags.Items.Clear()
+    '    For Each item In DecisionControl.TagMasterList
+    '        lstAllTags.Items.Add(item)
+    '    Next
+    'End Sub
 End Class

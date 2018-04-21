@@ -79,10 +79,10 @@ Partial Class SoundsBadForm
         '
         'clstTags
         '
+        Me.clstTags.CheckOnClick = True
         Me.clstTags.FormattingEnabled = True
         Me.clstTags.Location = New System.Drawing.Point(6, 21)
         Me.clstTags.Name = "clstTags"
-        Me.clstTags.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clstTags.Size = New System.Drawing.Size(194, 208)
         Me.clstTags.TabIndex = 1
         '
@@ -98,10 +98,10 @@ Partial Class SoundsBadForm
         '
         'clstRest
         '
+        Me.clstRest.CheckOnClick = True
         Me.clstRest.FormattingEnabled = True
         Me.clstRest.Location = New System.Drawing.Point(0, 21)
         Me.clstRest.Name = "clstRest"
-        Me.clstRest.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clstRest.Size = New System.Drawing.Size(194, 208)
         Me.clstRest.TabIndex = 0
         '

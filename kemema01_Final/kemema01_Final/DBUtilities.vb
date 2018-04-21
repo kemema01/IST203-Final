@@ -150,6 +150,62 @@ Public NotInheritable Class DBUtilities
         Return list
     End Function
 
+    Public Shared Sub GetLikeLines(buddy As Person)
+        Dim list As New List(Of Tag)
+
+        'SQL = "SELECT tag_line_t.TagID, tag_line_t.TagValue FROM tag_line_t, tags_t WHERE tag_line_t.RestID = " + rest.ID.ToString() +
+        '   " AND tag_line_t.TagID = tags_t.TagID ORDER BY TagValue;"
+        SQL = "SELECT l.tagid, t.tagvalue FROM like_line_t l, tags_t t WHERE l.tagid = t.tagid AND l.perid = " + buddy.ID.ToString() +
+            " ORDER BY TagValue;"
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+            command = New MySqlCommand(SQL, conn)
+            reader = command.ExecuteReader
+
+            While (reader.Read)
+                Dim ID As Integer = reader.GetInt32(0)
+                Dim tagValue As String = reader.GetString(1)
+                Dim temp As New Tag(ID, tagValue)
+                list.Add(temp)
+            End While
+        Catch ex As Exception
+            list = Nothing
+        Finally
+            conn.Close()
+        End Try
+        buddy.Likes = list
+    End Sub
+
+    Public Shared Sub GetDislikeLines(buddy As Person)
+        Dim list As New List(Of Tag)
+
+        'SQL = "SELECT tag_line_t.TagID, tag_line_t.TagValue FROM tag_line_t, tags_t WHERE tag_line_t.RestID = " + rest.ID.ToString() +
+        '   " AND tag_line_t.TagID = tags_t.TagID ORDER BY TagValue;"
+        SQL = "SELECT d.tagid, t.tagvalue FROM dislike_line_t d, tags_t t WHERE d.tagid = t.tagid AND d.perid = " + buddy.ID.ToString() +
+            " ORDER BY TagValue;"
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+            command = New MySqlCommand(SQL, conn)
+            reader = command.ExecuteReader
+
+            While (reader.Read)
+                Dim ID As Integer = reader.GetInt32(0)
+                Dim tagValue As String = reader.GetString(1)
+                Dim temp As New Tag(ID, tagValue)
+                list.Add(temp)
+            End While
+        Catch ex As Exception
+            list = Nothing
+        Finally
+            conn.Close()
+        End Try
+        buddy.Dislikes = list
+    End Sub
+
     Public Shared Function GetHistoryEntries() As List(Of HistoryEntry)
         Dim list As New List(Of HistoryEntry)
 

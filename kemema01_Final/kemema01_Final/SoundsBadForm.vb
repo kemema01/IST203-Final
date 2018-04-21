@@ -2,14 +2,14 @@
 Option Explicit On
 'TODO HANDLE CHECKBOXES
 Public Class SoundsBadForm
-
+    Dim formLoaded As Boolean = False
     Private Sub WhatSoundsGoodForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'main decision progress
         If DecisionControl.Progress = 4 Then
             DecisionControl.RestMasterList = DBUtilities.GetRestList()
             DecisionControl.Progress = 5
         End If
-
+        formLoaded = False
         'reset/load lists
         LoadLists()
 
@@ -51,6 +51,7 @@ Public Class SoundsBadForm
                 chkDelivery.Checked = False
             End If
         End If
+        formLoaded = True
     End Sub
 
     'reset and re-load local lists from decisioncontrol lists
@@ -62,7 +63,9 @@ Public Class SoundsBadForm
             clstRest.Items.Add(item)
         Next
         For Each item In DecisionControl.TagMasterList
-            clstTags.Items.Add(item)
+            If Not DecisionControl.TagWantedList.Contains(item) Then
+                clstTags.Items.Add(item)
+            End If
         Next
 
         'if dc.restsoundsbad has restaurants, check them in this control
@@ -123,4 +126,13 @@ Public Class SoundsBadForm
         Me.Close()
     End Sub
 
+    'Private Sub clstRest_SelectedIndexChanged(sender As Object, e As EventArgs) Handles clstRest.SelectedIndexChanged
+    '    If formLoaded = True Then
+    '        If clstRest.CheckedItems.Contains(clstRest.SelectedItem) Then
+    '            clstRest.SetItemChecked(clstRest.Items.IndexOf(clstRest.SelectedItem), False)
+    '        Else
+    '            clstRest.SetItemChecked(clstRest.Items.IndexOf(clstRest.SelectedItem), True)
+    '        End If
+    '    End If
+    'End Sub
 End Class

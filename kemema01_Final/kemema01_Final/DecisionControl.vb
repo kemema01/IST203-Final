@@ -15,6 +15,9 @@ Public NotInheritable Class DecisionControl
     Private Shared mProgress As Integer
     Private Shared mCategoriesGood As Boolean() = {False, False, False} 'index 0=dine in, 1=carryout, 2=delivery
     Private Shared mCategoriesBad As Boolean() = {False, False, False} 'ditto
+    Private Shared mWinner As Restaurant
+    Private Shared mScoreBoard As New List(Of Restaurant)
+    'Private shared mSplashStatus As string
 
 
     Private Sub New()
@@ -130,6 +133,23 @@ Public NotInheritable Class DecisionControl
         End Set
     End Property
 
+    Public Shared Property Winner As Restaurant
+        Get
+            Return mWinner
+        End Get
+        Set(value As Restaurant)
+            mWinner = New Restaurant(value)
+        End Set
+    End Property
+
+    Public Shared Property ScoreBoard As List(Of Restaurant)
+        Get
+            Return mScoreBoard
+        End Get
+        Set(value As List(Of Restaurant))
+            mScoreBoard = value
+        End Set
+    End Property
     'Who's Here?
     'Receive list of people present from AttendanceForm
 

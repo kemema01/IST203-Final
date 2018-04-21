@@ -13,7 +13,43 @@ Public Class Restaurant
     Private mDineIn As Boolean
     Private mCarryOut As Boolean
     Private mDelivery As Boolean
+    Private mScore As Integer
 
+    Public Property DineIn As Boolean
+        Get
+            Return mDineIn
+        End Get
+        Set(value As Boolean)
+            mDineIn = value
+        End Set
+    End Property
+
+    Public Property CarryOut As Boolean
+        Get
+            Return CarryOut
+        End Get
+        Set(value As Boolean)
+            mCarryOut = value
+        End Set
+    End Property
+
+    Public Property Delivery As Boolean
+        Get
+            Return mDelivery
+        End Get
+        Set(value As Boolean)
+            mDelivery = value
+        End Set
+    End Property
+
+    Public Property Score As Integer
+        Get
+            Return mScore
+        End Get
+        Set(value As Integer)
+            mScore = value
+        End Set
+    End Property
 
     Public Property Name As String
         Get
@@ -50,7 +86,17 @@ Public Class Restaurant
         mDineIn = pDineIn
         mCarryOut = pCarryOut
         mDelivery = pDelivery
+        mScore = 1
+    End Sub
 
+    Public Sub New(pRest As Restaurant)
+        mID = pRest.ID
+        mName = pRest.Name
+        mCost = pRest.Cost
+        mDineIn = pRest.DineIn
+        mCarryOut = pRest.CarryOut
+        mDelivery = pRest.Delivery
+        mScore = pRest.Score
     End Sub
 
     Public Function GetTags() As List(Of Tag)
@@ -85,6 +131,10 @@ Public Class Restaurant
     'End Sub
     Public Overrides Function ToString() As String
         Return Name
+    End Function
+
+    Public Function ToStringScore() As String
+        Return "(" + Score.ToString + ") " + Name
     End Function
 
     Public Function CompareTo(other As Restaurant) As Integer Implements IComparable(Of Restaurant).CompareTo

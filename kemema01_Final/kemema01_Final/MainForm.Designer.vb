@@ -27,6 +27,9 @@ Partial Class MainForm
         Me.btnExit = New System.Windows.Forms.Button()
         Me.btnHistory = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnBegin
@@ -69,10 +72,28 @@ Partial Class MainForm
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel1.Controls.Add(Me.Label2)
+        Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Location = New System.Drawing.Point(12, 12)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(334, 165)
         Me.Panel1.TabIndex = 4
+        '
+        'Label1
+        '
+        Me.Label1.Location = New System.Drawing.Point(3, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(329, 23)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "The Decider ii"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Label2
+        '
+        Me.Label2.Location = New System.Drawing.Point(-2, 23)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(334, 138)
+        Me.Label2.TabIndex = 1
         '
         'MainForm
         '
@@ -93,6 +114,7 @@ Partial Class MainForm
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "The Decider"
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -102,4 +124,6 @@ Partial Class MainForm
     Friend WithEvents btnExit As Button
     Friend WithEvents btnHistory As Button
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label1 As Label
 End Class

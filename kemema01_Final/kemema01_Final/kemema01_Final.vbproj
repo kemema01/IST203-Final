@@ -109,6 +109,12 @@
     <Compile Include="EditRestaurantsForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FinalForm.Designer.vb">
+      <DependentUpon>FinalForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FinalForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="HistoryEntry.vb" />
     <Compile Include="HistoryForm.Designer.vb">
       <DependentUpon>HistoryForm.vb</DependentUpon>
@@ -164,6 +170,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AttendanceForm.resx">
       <DependentUpon>AttendanceForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinalForm.resx">
+      <DependentUpon>FinalForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HistoryForm.resx">
       <DependentUpon>HistoryForm.vb</DependentUpon>

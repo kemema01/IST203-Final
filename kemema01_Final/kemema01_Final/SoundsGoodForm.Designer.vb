@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class SoundsGoodForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class SoundsGoodForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.lstAllTags = New System.Windows.Forms.ListBox()
@@ -37,8 +37,6 @@ Partial Class SoundsGoodForm
         Me.chkCarryOut = New System.Windows.Forms.CheckBox()
         Me.chkDelivery = New System.Windows.Forms.CheckBox()
         Me.errprov = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.btnAll = New System.Windows.Forms.Button()
-        Me.btnClear = New System.Windows.Forms.Button()
         Me.grpDesired.SuspendLayout()
         Me.grpAllTags.SuspendLayout()
         CType(Me.errprov, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -170,31 +168,11 @@ Partial Class SoundsGoodForm
         '
         Me.errprov.ContainerControl = Me
         '
-        'btnAll
-        '
-        Me.btnAll.Location = New System.Drawing.Point(12, 278)
-        Me.btnAll.Name = "btnAll"
-        Me.btnAll.Size = New System.Drawing.Size(100, 25)
-        Me.btnAll.TabIndex = 11
-        Me.btnAll.Text = "All >>"
-        Me.btnAll.UseVisualStyleBackColor = True
-        '
-        'btnClear
-        '
-        Me.btnClear.Location = New System.Drawing.Point(318, 278)
-        Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(100, 25)
-        Me.btnClear.TabIndex = 12
-        Me.btnClear.Text = "<< Clear"
-        Me.btnClear.UseVisualStyleBackColor = True
-        '
         'SoundsGoodForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(432, 343)
-        Me.Controls.Add(Me.btnClear)
-        Me.Controls.Add(Me.btnAll)
         Me.Controls.Add(Me.chkDelivery)
         Me.Controls.Add(Me.chkCarryOut)
         Me.Controls.Add(Me.chkDineIn)
@@ -235,6 +213,4 @@ Partial Class SoundsGoodForm
     Friend WithEvents chkCarryOut As CheckBox
     Friend WithEvents chkDelivery As CheckBox
     Friend WithEvents errprov As ErrorProvider
-    Friend WithEvents btnClear As Button
-    Friend WithEvents btnAll As Button
 End Class

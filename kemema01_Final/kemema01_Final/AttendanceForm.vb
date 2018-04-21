@@ -100,4 +100,19 @@ Public Class AttendanceForm
 
         Me.Close()
     End Sub
+
+    Private Sub btnAll_Click(sender As Object, e As EventArgs) Handles btnAll.Click
+        For Each item In lstAllPeople.Items
+            lstPresent.Items.Add(item)
+        Next
+        lstAllPeople.Items.Clear()
+    End Sub
+
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        lstPresent.Items.Clear()
+        lstAllPeople.Items.Clear()
+        For Each item In DecisionControl.PeopleMasterList
+            lstAllPeople.Items.Add(item)
+        Next
+    End Sub
 End Class

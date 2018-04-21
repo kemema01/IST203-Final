@@ -6,12 +6,26 @@ Public Class MainForm
     'Begin decision making process.
     Private Sub btnBegin_Click(sender As Object, e As EventArgs) Handles btnBegin.Click
         AttendanceForm.ShowDialog()
+        If Not DecisionControl.PeoplePresentList.Count > 0 Then
+            Beep()
+            Return
+        Else
+            'Label2.Text
+        End If
 
-        'maybe dump progress text somewhere?
         SoundsGoodForm.ShowDialog()
+        If Not DecisionControl.TagWantedList.Count > 0 Then
+            Beep()
+            Return
+        End If
 
         SoundsBadForm.ShowDialog()
+        If DecisionControl.Progress = 6 Then
+            Beep()
+            Return
+        End If
 
+        FinalForm.ShowDialog()
 
     End Sub
 

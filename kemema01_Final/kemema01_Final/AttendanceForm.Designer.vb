@@ -34,6 +34,8 @@ Partial Class AttendanceForm
         Me.btnContinue = New System.Windows.Forms.Button()
         Me.btnReset = New System.Windows.Forms.Button()
         Me.errProv = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.btnClear = New System.Windows.Forms.Button()
+        Me.btnAll = New System.Windows.Forms.Button()
         Me.grpAll.SuspendLayout()
         Me.grpPresent.SuspendLayout()
         CType(Me.errProv, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,7 +90,7 @@ Partial Class AttendanceForm
         '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(106, 251)
+        Me.btnAdd.Location = New System.Drawing.Point(112, 251)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(100, 25)
         Me.btnAdd.TabIndex = 3
@@ -97,7 +99,7 @@ Partial Class AttendanceForm
         '
         'btnRemove
         '
-        Me.btnRemove.Location = New System.Drawing.Point(224, 251)
+        Me.btnRemove.Location = New System.Drawing.Point(218, 251)
         Me.btnRemove.Name = "btnRemove"
         Me.btnRemove.Size = New System.Drawing.Size(100, 25)
         Me.btnRemove.TabIndex = 4
@@ -135,11 +137,31 @@ Partial Class AttendanceForm
         '
         Me.errProv.ContainerControl = Me
         '
+        'btnClear
+        '
+        Me.btnClear.Location = New System.Drawing.Point(318, 251)
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(100, 25)
+        Me.btnClear.TabIndex = 14
+        Me.btnClear.Text = "<< Clear"
+        Me.btnClear.UseVisualStyleBackColor = True
+        '
+        'btnAll
+        '
+        Me.btnAll.Location = New System.Drawing.Point(12, 251)
+        Me.btnAll.Name = "btnAll"
+        Me.btnAll.Size = New System.Drawing.Size(100, 25)
+        Me.btnAll.TabIndex = 13
+        Me.btnAll.Text = "All >>"
+        Me.btnAll.UseVisualStyleBackColor = True
+        '
         'AttendanceForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(432, 318)
+        Me.Controls.Add(Me.btnClear)
+        Me.Controls.Add(Me.btnAll)
         Me.Controls.Add(Me.btnReset)
         Me.Controls.Add(Me.btnContinue)
         Me.Controls.Add(Me.btnCancel)
@@ -173,4 +195,6 @@ Partial Class AttendanceForm
     Friend WithEvents btnContinue As Button
     Friend WithEvents btnReset As Button
     Friend WithEvents errProv As ErrorProvider
+    Friend WithEvents btnClear As Button
+    Friend WithEvents btnAll As Button
 End Class
