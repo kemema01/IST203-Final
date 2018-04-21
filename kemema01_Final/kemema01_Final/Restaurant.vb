@@ -130,12 +130,17 @@ Public Class Restaurant
     '    Next
     'End Sub
     Public Overrides Function ToString() As String
-        Return Name
+        Dim output As String = ""
+        If DecisionControl.FinalFlag = True Then
+            output += "(" + Score.ToString() + ") "
+        End If
+        output += Name
+        Return output
     End Function
 
-    Public Function ToStringScore() As String
-        Return "(" + Score.ToString + ") " + Name
-    End Function
+    'Public Function ToStringScore() As String
+    '    Return "(" + Score.ToString + ") " + Name
+    'End Function
 
     Public Function CompareTo(other As Restaurant) As Integer Implements IComparable(Of Restaurant).CompareTo
         Dim result As Integer = Me.ID.CompareTo(other.ID)

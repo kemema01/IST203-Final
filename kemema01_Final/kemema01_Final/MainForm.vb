@@ -20,12 +20,15 @@ Public Class MainForm
         End If
 
         SoundsBadForm.ShowDialog()
-        If DecisionControl.Progress = 6 Then
+        If Not DecisionControl.Progress = 6 Then
             Beep()
             Return
         End If
 
         FinalForm.ShowDialog()
+        If DecisionControl.Progress = 8 Then
+            DecisionControl.Reset()
+        End If
 
     End Sub
 

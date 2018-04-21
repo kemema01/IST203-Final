@@ -19,25 +19,47 @@ Public NotInheritable Class DBUtilities
     End Sub
 
     'FILL
-    Public Shared Function GetMembersTable() As DataTable
-        Dim table As DataTable
-        SQL = "SELECT * FROM person_t" 'TABLE
-
+    Public Shared Function GetNewHistoryEntry() As Integer
+        SQL = "SELECT h.entryid, count(a.perid) as n " +
+            "FROM history_entry_t h LEFT JOIN attendance_line_t a ON h.entryid = a.entryid " +
+            "GROUP BY h.entryid " +
+            "HAVING n = 0;"
+        Dim output As Integer = -1
         Try
+            conn = New MySqlConnection(CONNECTION_STRING)
             conn.Open()
+            command = New MySqlCommand(SQL, conn)
+            reader = command.ExecuteReader
 
-            Dim dataset As New DataSet
-            adapter = New MySqlDataAdapter(SQL, conn)
-            adapter.Fill(dataset)
-
-            table = dataset.Tables(0)
+            While reader.Read
+                output = reader.GetInt32(0)
+            End While
         Catch ex As Exception
-            table = Nothing
+            Beep()
         Finally
             conn.Close()
         End Try
-        Return table
+        Return output
     End Function
+    'Public Shared Function GetMembersTable() As DataTable
+    '    Dim table As DataTable
+    '    SQL = "SELECT * FROM person_t" 'TABLE
+
+    '    Try
+    '        conn.Open()
+
+    '        Dim dataset As New DataSet
+    '        adapter = New MySqlDataAdapter(SQL, conn)
+    '        adapter.Fill(dataset)
+
+    '        table = dataset.Tables(0)
+    '    Catch ex As Exception
+    '        table = Nothing
+    '    Finally
+    '        conn.Close()
+    '    End Try
+    '    Return table
+    'End Function
 
     Public Shared Function GetMembersList() As List(Of Person)
         Dim list As New List(Of Person)

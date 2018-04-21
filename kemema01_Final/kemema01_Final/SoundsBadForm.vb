@@ -59,6 +59,8 @@ Public Class SoundsBadForm
         clstTags.Items.Clear()
         clstRest.Items.Clear()
 
+        'to avoid confusion, if an item is on 'sounds good' lists, don't let it be a candidate for
+        'sounds bad lists
         For Each item In DecisionControl.RestMasterList
             clstRest.Items.Add(item)
         Next
@@ -90,7 +92,14 @@ Public Class SoundsBadForm
 
     'update decisioncontrol.restsoundsbad,tagssoundsbad
     Private Sub btnContinue_Click(sender As Object, e As EventArgs) Handles btnContinue.Click
+        errprov.Clear()
 
+        If (clstRest.CheckedItems.Count = DecisionControl.RestMasterList.Count) Or
+            (clstTags.CheckedItems.Count = DecisionControl.TagMasterList.Count) Then
+            Beep()
+            errprov.SetError(btnContinue, "You can't exclude everything!")
+            Return
+        End If
         DecisionControl.RestSoundsBad.Clear()
         For Each item In clstRest.CheckedItems
             DecisionControl.RestSoundsBad.Add(CType(item, Restaurant))
@@ -119,11 +128,16 @@ Public Class SoundsBadForm
             DecisionControl.CatBad(2) = False
         End If
 
-        If DecisionControl.Progress < 5 Then
-            DecisionControl.Progress = 5
+        If DecisionControl.Progress < 6 Then
+            DecisionControl.Progress = 6
         End If
 
         Me.Close()
+    End Sub
+
+    Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+        errprov.Clear()
+        LoadLists()
     End Sub
 
     'Private Sub clstRest_SelectedIndexChanged(sender As Object, e As EventArgs) Handles clstRest.SelectedIndexChanged
