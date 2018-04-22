@@ -358,14 +358,14 @@ Public NotInheritable Class DBUtilities
         Dim result As Boolean = False
         mLastStatus = "Error adding record: Person."
 
-        SQL = "INSERT INTO person_t (PerName) VALUES(@PerName)" 'Table(Name) VALUES(@Name)
+        SQL = "INSERT INTO person_t (PerName) VALUES (@PerName);" 'Table(Name) VALUES(@Name)
 
         Try
             conn = New MySqlConnection(CONNECTION_STRING)
             conn.Open()
 
             command = New MySqlCommand(SQL, conn)
-            command.Parameters.AddWithValue("@Name", buddy.Name)
+            command.Parameters.AddWithValue("@PerName", buddy.Name)
 
             If command.ExecuteNonQuery > 0 Then
                 result = True
@@ -405,7 +405,6 @@ Public NotInheritable Class DBUtilities
             conn.Open()
 
             command = New MySqlCommand(SQL, conn)
-            command.Parameters.AddWithValue("@Name", buddy.Name)
 
             If command.ExecuteNonQuery > 0 Then
                 result = True
@@ -431,7 +430,7 @@ Public NotInheritable Class DBUtilities
 
         SQL = "INSERT INTO Dislike_line_t (PerID, TagID) VALUES "
 
-        For Each descriptor In buddy.Likes
+        For Each descriptor In buddy.Dislikes
             SQL += "(" + buddy.ID.ToString + ", " + descriptor.ID.ToString + ")"
             If buddy.Likes.IndexOf(descriptor) < buddy.Likes.Count - 1 Then
                 SQL += ", "
@@ -445,7 +444,6 @@ Public NotInheritable Class DBUtilities
             conn.Open()
 
             command = New MySqlCommand(SQL, conn)
-            command.Parameters.AddWithValue("@Name", buddy.Name)
 
             If command.ExecuteNonQuery > 0 Then
                 result = True

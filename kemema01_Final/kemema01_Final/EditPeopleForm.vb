@@ -23,16 +23,30 @@
                 Beep()
                 errProv.SetError(clstLikes, "Select at least one Like.")
             End If
-            'copy likes from chklst to temp person
+            'logic handling: likes/dislikes can't share items
             For Each item In clstLikes.CheckedItems
-                temp.Likes.Add(CType(item, Tag))
+                If clstDislikes.CheckedItems.Contains(item) Then
+                    Beep()
+                    errProv.SetError(btnConfirm, "Likes/Dislikes lists cannot share items.")
+                    Return
+                End If
             Next
+            'copy likes from chklst to temp person
+            Dim hate As New List(Of Tag)
+            For Each item In clstLikes.CheckedItems
+                'temp.Likes.Add(CType(item, Tag))
+                hate.Add(CType(item, Tag))
+            Next
+            temp.Likes = hate
             'ditto dislikes
+            Dim hate2 As New List(Of Tag)
             If clstDislikes.CheckedItems.Count > 0 Then
                 For Each item In clstDislikes.CheckedItems
-                    temp.Dislikes.Add(CType(item, Tag))
+                    'temp.Dislikes.Add(CType(item, Tag))
+                    hate2.Add(CType(item, Tag))
                 Next
             End If
+            temp.Dislikes = hate2
             'error out if person record can't be entered, else continue
             If Not DBUtilities.InsertPerson(temp) Then
                 Beep()
@@ -63,6 +77,14 @@
                 Beep()
                 errProv.SetError(clstLikes, "Select at least one Like.")
             End If
+            'logic handling: likes/dislikes can't share items
+            For Each item In clstLikes.CheckedItems
+                If clstDislikes.CheckedItems.Contains(item) Then
+                    Beep()
+                    errProv.SetError(btnConfirm, "Likes/Dislikes lists cannot share items.")
+                    Return
+                End If
+            Next
             'copy likes from chklst to temp person and -
             For Each item In clstLikes.CheckedItems
                 temp.Likes.Add(CType(item, Tag))
@@ -169,7 +191,8 @@
                     clstDislikes.SetItemChecked(i, False)
                 End If
             Next
+            txtName.Text = CType(cmbName.SelectedValue, Person).Name
         End If
-        txtName.Text = CType(cmbName.SelectedValue, Person).Name
+
     End Sub
 End Class
