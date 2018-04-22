@@ -25,7 +25,6 @@ Partial Class SoundsBadForm
         Me.components = New System.ComponentModel.Container()
         Me.btnReset = New System.Windows.Forms.Button()
         Me.btnContinue = New System.Windows.Forms.Button()
-        Me.btnCancel = New System.Windows.Forms.Button()
         Me.grpTags = New System.Windows.Forms.GroupBox()
         Me.clstTags = New System.Windows.Forms.CheckedListBox()
         Me.grpRest = New System.Windows.Forms.GroupBox()
@@ -42,7 +41,7 @@ Partial Class SoundsBadForm
         '
         'btnReset
         '
-        Me.btnReset.Location = New System.Drawing.Point(165, 309)
+        Me.btnReset.Location = New System.Drawing.Point(12, 309)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.Size = New System.Drawing.Size(100, 25)
         Me.btnReset.TabIndex = 7
@@ -57,15 +56,6 @@ Partial Class SoundsBadForm
         Me.btnContinue.TabIndex = 8
         Me.btnContinue.Text = "Continue"
         Me.btnContinue.UseVisualStyleBackColor = True
-        '
-        'btnCancel
-        '
-        Me.btnCancel.Location = New System.Drawing.Point(12, 309)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(100, 25)
-        Me.btnCancel.TabIndex = 9
-        Me.btnCancel.Text = "Cancel"
-        Me.btnCancel.UseVisualStyleBackColor = True
         '
         'grpTags
         '
@@ -158,7 +148,6 @@ Partial Class SoundsBadForm
         Me.Controls.Add(Me.chkDineIn)
         Me.Controls.Add(Me.btnReset)
         Me.Controls.Add(Me.btnContinue)
-        Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.grpTags)
         Me.Controls.Add(Me.grpRest)
         Me.Controls.Add(Me.Label1)
@@ -178,7 +167,6 @@ Partial Class SoundsBadForm
     End Sub
     Friend WithEvents btnReset As Button
     Friend WithEvents btnContinue As Button
-    Friend WithEvents btnCancel As Button
     Friend WithEvents grpTags As GroupBox
     Friend WithEvents grpRest As GroupBox
     Friend WithEvents Label1 As Label

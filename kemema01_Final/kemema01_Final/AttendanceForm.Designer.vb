@@ -30,7 +30,6 @@ Partial Class AttendanceForm
         Me.grpPresent = New System.Windows.Forms.GroupBox()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnRemove = New System.Windows.Forms.Button()
-        Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnContinue = New System.Windows.Forms.Button()
         Me.btnReset = New System.Windows.Forms.Button()
         Me.errProv = New System.Windows.Forms.ErrorProvider(Me.components)
@@ -106,15 +105,6 @@ Partial Class AttendanceForm
         Me.btnRemove.Text = "< Remove"
         Me.btnRemove.UseVisualStyleBackColor = True
         '
-        'btnCancel
-        '
-        Me.btnCancel.Location = New System.Drawing.Point(12, 282)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(100, 25)
-        Me.btnCancel.TabIndex = 7
-        Me.btnCancel.Text = "Cancel"
-        Me.btnCancel.UseVisualStyleBackColor = True
-        '
         'btnContinue
         '
         Me.btnContinue.Location = New System.Drawing.Point(318, 282)
@@ -164,7 +154,6 @@ Partial Class AttendanceForm
         Me.Controls.Add(Me.btnAll)
         Me.Controls.Add(Me.btnReset)
         Me.Controls.Add(Me.btnContinue)
-        Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnRemove)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.grpPresent)
@@ -191,7 +180,6 @@ Partial Class AttendanceForm
     Friend WithEvents grpPresent As GroupBox
     Friend WithEvents btnAdd As Button
     Friend WithEvents btnRemove As Button
-    Friend WithEvents btnCancel As Button
     Friend WithEvents btnContinue As Button
     Friend WithEvents btnReset As Button
     Friend WithEvents errProv As ErrorProvider

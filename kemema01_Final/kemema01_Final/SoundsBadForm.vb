@@ -72,18 +72,28 @@ Public Class SoundsBadForm
 
         'if dc.restsoundsbad has restaurants, check them in this control
         If DecisionControl.RestSoundsBad.Count > 0 Then
-            For Each item In clstRest.Items
-                If DecisionControl.RestSoundsBad.Contains(CType(item, Restaurant)) Then
-                    clstRest.SetItemChecked(clstRest.Items.IndexOf(item), True)
-                End If
+            'For Each item In clstRest.Items
+            '    If DecisionControl.RestSoundsBad.Contains(CType(item, Restaurant)) Then
+            '        clstRest.SetItemChecked(clstRest.Items.IndexOf(item), True)
+            '    End If
 
+            'Next
+            For i As Integer = 0 To clstRest.Items.Count - 1 Step 1
+                If DecisionControl.RestSoundsBad.Contains(CType(clstRest.Items(i), Restaurant)) Then
+                    clstRest.SetItemChecked(i, True)
+                End If
             Next
         End If
         'if dc.tagsoundsbad has tags, check them in this control
         If DecisionControl.TagsSoundsBad.Count > 0 Then
-            For Each item In clstTags.Items
-                If DecisionControl.TagsSoundsBad.Contains(CType(item, Tag)) Then
-                    clstTags.SetItemChecked(clstTags.Items.IndexOf(item), True)
+            'For Each item In clstTags.Items
+            '    If DecisionControl.TagsSoundsBad.Contains(CType(item, Tag)) Then
+            '        clstTags.SetItemChecked(clstTags.Items.IndexOf(item), True)
+            '    End If
+            'Next
+            For i As Integer = 0 To clstTags.Items.Count - 1 Step 1
+                If DecisionControl.TagsSoundsBad.Contains(CType(clstTags.Items(i), Tag)) Then
+                    clstTags.SetItemChecked(i, True)
                 End If
             Next
         End If

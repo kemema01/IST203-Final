@@ -41,7 +41,7 @@ Partial Class OptionsForm
         'cmbSelection
         '
         Me.cmbSelection.FormattingEnabled = True
-        Me.cmbSelection.Items.AddRange(New Object() {"", "People", "Restaurants"})
+        Me.cmbSelection.Items.AddRange(New Object() {"People", "Restaurants"})
         Me.cmbSelection.Location = New System.Drawing.Point(200, 32)
         Me.cmbSelection.Name = "cmbSelection"
         Me.cmbSelection.Size = New System.Drawing.Size(131, 24)

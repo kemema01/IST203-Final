@@ -171,6 +171,9 @@
     <EmbeddedResource Include="AttendanceForm.resx">
       <DependentUpon>AttendanceForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditPeopleForm.resx">
+      <DependentUpon>EditPeopleForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FinalForm.resx">
       <DependentUpon>FinalForm.vb</DependentUpon>
     </EmbeddedResource>

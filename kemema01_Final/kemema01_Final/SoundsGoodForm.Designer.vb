@@ -27,7 +27,6 @@ Partial Class SoundsGoodForm
         Me.lstDesiredTags = New System.Windows.Forms.ListBox()
         Me.btnReset = New System.Windows.Forms.Button()
         Me.btnContinue = New System.Windows.Forms.Button()
-        Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnRemove = New System.Windows.Forms.Button()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.grpDesired = New System.Windows.Forms.GroupBox()
@@ -62,7 +61,7 @@ Partial Class SoundsGoodForm
         '
         'btnReset
         '
-        Me.btnReset.Location = New System.Drawing.Point(165, 309)
+        Me.btnReset.Location = New System.Drawing.Point(12, 309)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.Size = New System.Drawing.Size(100, 25)
         Me.btnReset.TabIndex = 7
@@ -77,15 +76,6 @@ Partial Class SoundsGoodForm
         Me.btnContinue.TabIndex = 8
         Me.btnContinue.Text = "Continue"
         Me.btnContinue.UseVisualStyleBackColor = True
-        '
-        'btnCancel
-        '
-        Me.btnCancel.Location = New System.Drawing.Point(12, 309)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(100, 25)
-        Me.btnCancel.TabIndex = 9
-        Me.btnCancel.Text = "Cancel"
-        Me.btnCancel.UseVisualStyleBackColor = True
         '
         'btnRemove
         '
@@ -178,7 +168,6 @@ Partial Class SoundsGoodForm
         Me.Controls.Add(Me.chkDineIn)
         Me.Controls.Add(Me.btnReset)
         Me.Controls.Add(Me.btnContinue)
-        Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnRemove)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.grpDesired)
@@ -203,7 +192,6 @@ Partial Class SoundsGoodForm
     Friend WithEvents lstDesiredTags As ListBox
     Friend WithEvents btnReset As Button
     Friend WithEvents btnContinue As Button
-    Friend WithEvents btnCancel As Button
     Friend WithEvents btnRemove As Button
     Friend WithEvents btnAdd As Button
     Friend WithEvents grpDesired As GroupBox

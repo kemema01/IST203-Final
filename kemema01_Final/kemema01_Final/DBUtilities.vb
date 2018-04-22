@@ -18,12 +18,38 @@ Public NotInheritable Class DBUtilities
         'Can't instanstiate this class.
     End Sub
 
+    Public Shared ReadOnly Property LastStatus As String
+        Get
+            Return mLastStatus
+        End Get
+    End Property
+
     'FILL
     Public Shared Function GetNewHistoryEntry() As Integer
         SQL = "SELECT h.entryid, count(a.perid) as n " +
             "FROM history_entry_t h LEFT JOIN attendance_line_t a ON h.entryid = a.entryid " +
             "GROUP BY h.entryid " +
             "HAVING n = 0;"
+        Dim output As Integer = -1
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+            command = New MySqlCommand(SQL, conn)
+            reader = command.ExecuteReader
+
+            While reader.Read
+                output = reader.GetInt32(0)
+            End While
+        Catch ex As Exception
+            Beep()
+        Finally
+            conn.Close()
+        End Try
+        Return output
+    End Function
+
+    Public Shared Function GetNewPersonEntry() As Integer
+        SQL = "SELECT p.PerID, count(l.tagID) as n FROM person_t p LEFT JOIN like_line_t l ON p.PerID = l.perID GROUP BY p.perid HAVING n = 0;"
         Dim output As Integer = -1
         Try
             conn = New MySqlConnection(CONNECTION_STRING)
@@ -332,7 +358,7 @@ Public NotInheritable Class DBUtilities
         Dim result As Boolean = False
         mLastStatus = "Error adding record: Person."
 
-        SQL = "INSERT INTO " 'Table(Name) VALUES(@Name)
+        SQL = "INSERT INTO person_t (PerName) VALUES(@PerName)" 'Table(Name) VALUES(@Name)
 
         Try
             conn = New MySqlConnection(CONNECTION_STRING)
@@ -559,6 +585,32 @@ Public NotInheritable Class DBUtilities
 
     'UPDATE
     'PERSON
+    Public Shared Function UpdatePerson(pOld As Person, pNew As Person) As Boolean
+        Dim result As Boolean = False
+        mLastStatus = "Error updating record: Person"
+
+        SQL = "UPDATE person_t SET PerName = @NewName WHERE PerID = @OldID;"
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+
+            command = New MySqlCommand(SQL, conn)
+            command.Parameters.AddWithValue("@NewName", pNew.Name)
+            command.Parameters.AddWithValue("@OldID", pOld.ID)
+
+            If command.ExecuteNonQuery > 0 Then
+                result = True
+                mLastStatus = "Record successfully updated: Person"
+            End If
+        Catch ex As Exception
+            mLastStatus += " " + ex.Message
+        Finally
+            conn.Close()
+
+        End Try
+        Return result
+    End Function
     'RESTAURANT
 
     'DELETE:
@@ -631,6 +683,33 @@ Public NotInheritable Class DBUtilities
             If command.ExecuteNonQuery > 0 Then
                 result = True
                 mLastStatus = "Record successfully removed: Dislike Lines - " + buddy.Name + "."
+            End If
+        Catch ex As Exception
+            mLastStatus += " " + ex.Message
+        Finally
+            conn.Close()
+        End Try
+
+        Return result
+    End Function
+
+    'Attendance Lines
+    Public Shared Function DeleteAttendanceLines(buddy As Person) As Boolean
+        Dim result As Boolean = False
+        mLastStatus = "Error removing record: Attendance Lines - " + buddy.Name + "."
+
+        SQL = "DELETE FROM attendance_line_t WHERE PerID = @PerID;"
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+
+            command = New MySqlCommand(SQL, conn)
+            command.Parameters.AddWithValue("@PerID", buddy.ID)
+
+            If command.ExecuteNonQuery > 0 Then
+                result = True
+                mLastStatus = "Record successfully removed: Attendance Lines - " + buddy.Name + "."
             End If
         Catch ex As Exception
             mLastStatus += " " + ex.Message
