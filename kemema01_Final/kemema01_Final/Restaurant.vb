@@ -26,7 +26,7 @@ Public Class Restaurant
 
     Public Property CarryOut As Boolean
         Get
-            Return CarryOut
+            Return mCarryOut
         End Get
         Set(value As Boolean)
             mCarryOut = value

@@ -67,6 +67,27 @@ Public NotInheritable Class DBUtilities
         End Try
         Return output
     End Function
+
+    Public Shared Function GetNewRestEntry() As Integer
+        SQL = "SELECT r.RestID, COUNT(l.tagID) AS n FROM restaurant_t r LEFT JOIN tag_line_t l ON r.Restid = l.RestID GROUP BY r.restid HAVING n = 0;"
+        Dim output As Integer = -1
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+            command = New MySqlCommand(SQL, conn)
+            reader = command.ExecuteReader
+
+            While reader.Read
+                output = reader.GetInt32(0)
+            End While
+        Catch ex As Exception
+            Beep()
+        Finally
+            conn.Close()
+        End Try
+        Return output
+    End Function
+
     'Public Shared Function GetMembersTable() As DataTable
     '    Dim table As DataTable
     '    SQL = "SELECT * FROM person_t" 'TABLE
@@ -461,15 +482,27 @@ Public NotInheritable Class DBUtilities
         Dim result As Boolean = False
         mLastStatus = "Error adding record: Restaurant."
 
-        SQL = "INSERT INTO restaurant_t (RestName, RestPrice) VALUES (@RestName, @RestPrice);" 'Table(Name) VALUES(@Name)
-
+        SQL = "INSERT INTO restaurant_t (RestName, RestPrice, DineIn, CarryOut, Delivery) VALUES (@RestName, @RestPrice, @DineIn, @CarryOut, @Delivery);"
+        Dim boolArray() As Integer = {0, 0, 0}
+        If rest.DineIn = True Then
+            boolArray(0) = 1
+        End If
+        If rest.CarryOut = True Then
+            boolArray(1) = 1
+        End If
+        If rest.Delivery = True Then
+            boolArray(2) = 1
+        End If
         Try
             conn = New MySqlConnection(CONNECTION_STRING)
             conn.Open()
 
             command = New MySqlCommand(SQL, conn)
             command.Parameters.AddWithValue("@RestName", rest.Name)
-            command.Parameters.AddWithValue("RestPrice", rest.Cost)
+            command.Parameters.AddWithValue("@RestPrice", rest.Cost)
+            command.Parameters.AddWithValue("@DineIn", boolArray(0))
+            command.Parameters.AddWithValue("@CarryOut", boolArray(1))
+            command.Parameters.AddWithValue("@Delivery", boolArray(2))
 
             If command.ExecuteNonQuery > 0 Then
                 result = True
@@ -505,11 +538,8 @@ Public NotInheritable Class DBUtilities
         Try
             conn = New MySqlConnection(CONNECTION_STRING)
             conn.Open()
-            'TODO FIX COMMAND SEQUENCE
+
             command = New MySqlCommand(SQL, conn)
-            'command.Parameters.AddWithValue("@Name", rest.Name)
-
-
             If command.ExecuteNonQuery > 0 Then
                 result = True
                 mLastStatus = "Record successfully added: Tag Line(s)."
@@ -521,6 +551,7 @@ Public NotInheritable Class DBUtilities
         End Try
         Return result
     End Function
+
     'INSERT: HISTORY ENTRY
     Public Shared Function InsertHistoryEntry(rest As Restaurant) As Boolean
         Dim result As Boolean = False
@@ -610,7 +641,53 @@ Public NotInheritable Class DBUtilities
         Return result
     End Function
     'RESTAURANT
+    Public Shared Function UpdateRestaurant(pOld As Restaurant, pNew As Restaurant) As Boolean
+        Dim result As Boolean = False
+        mLastStatus = "Error updating record: Restaurant"
 
+        SQL = "UPDATE restaurant_t SET RestName = @NewName, " +
+            "RestPrice = @NewPrice, " +
+            "DineIn = @NewDineIn, " +
+            "CarryOut = @NewCarryOut, " +
+            "Delivery = @NewDelivery " +
+            "WHERE RestID = @OldID;"
+
+        Dim boolArray() As Integer = {0, 0, 0}
+        If pNew.DineIn = True Then
+            boolArray(0) = 1
+        End If
+        If pNew.CarryOut = True Then
+            boolArray(1) = 1
+        End If
+        If pNew.Delivery = True Then
+            boolArray(2) = 1
+        End If
+
+        Try
+
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+
+            command = New MySqlCommand(SQL, conn)
+            command.Parameters.AddWithValue("@NewName", pNew.Name)
+            command.Parameters.AddWithValue("@NewPrice", pNew.Cost)
+            command.Parameters.AddWithValue("@NewDineIn", boolArray(0))
+            command.Parameters.AddWithValue("@NewCarryOut", boolArray(1))
+            command.Parameters.AddWithValue("@NewDelivery", boolArray(2))
+            command.Parameters.AddWithValue("@OldID", pOld.ID)
+
+            If command.ExecuteNonQuery > 0 Then
+                result = True
+                mLastStatus = "Record successfully updated: Restaurant"
+            End If
+        Catch ex As Exception
+            mLastStatus += " " + ex.Message
+        Finally
+            conn.Close()
+
+        End Try
+        Return result
+    End Function
     'DELETE:
     'Person
     Public Shared Function DeletePerson(buddy As Person) As Boolean
@@ -717,6 +794,32 @@ Public NotInheritable Class DBUtilities
 
         Return result
     End Function
+
+    Public Shared Function DeleteAttendanceLines(rest As Restaurant) As Boolean
+        Dim result As Boolean = False
+        mLastStatus = "Error removing record: Attendance Lines - " + rest.Name + "."
+        'get history entries for restid, delete those attendance lines
+        SQL = "DELETE FROM attendance_line_t WHERE attendance_line_t.EntryID IN (SELECT entryID FROM history_entry_t WHERE RestID = @RestID);"
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+
+            command = New MySqlCommand(SQL, conn)
+            command.Parameters.AddWithValue("@RestID", rest.ID)
+
+            If command.ExecuteNonQuery > 0 Then
+                result = True
+                mLastStatus = "Record successfully removed: Attendance Lines - " + rest.Name + "."
+            End If
+        Catch ex As Exception
+            mLastStatus += " " + ex.Message
+        Finally
+            conn.Close()
+        End Try
+
+        Return result
+    End Function
     'RESTAURANT
     Public Shared Function DeleteRestaurant(rest As Restaurant) As Boolean
         Dim result As Boolean = False
@@ -743,6 +846,31 @@ Public NotInheritable Class DBUtilities
 
         Return result
     End Function
-    ' / TAG LINES
+    'TAG LINES
+    Public Shared Function DeleteTagLines(rest As Restaurant) As Boolean
+        Dim result As Boolean = False
+        mLastStatus = "Error removing record: Tag Lines - " + rest.Name + "."
+
+        SQL = "DELETE FROM tag_line_t WHERE RestID = @RestID;"
+
+        Try
+            conn = New MySqlConnection(CONNECTION_STRING)
+            conn.Open()
+
+            command = New MySqlCommand(SQL, conn)
+            command.Parameters.AddWithValue("@RestID", rest.ID)
+
+            If command.ExecuteNonQuery > 0 Then
+                result = True
+                mLastStatus = "Record successfully removed: Like Lines - " + rest.Name + "."
+            End If
+        Catch ex As Exception
+            mLastStatus += " " + ex.Message
+        Finally
+            conn.Close()
+        End Try
+
+        Return result
+    End Function
 
 End Class

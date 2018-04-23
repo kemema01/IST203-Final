@@ -5,6 +5,7 @@ Public Class MainForm
 
     'Begin decision making process.
     Private Sub btnBegin_Click(sender As Object, e As EventArgs) Handles btnBegin.Click
+        'MessageBox.Show(CInt(True).ToString + ", " + (CInt(False)).ToString)
         AttendanceForm.ShowDialog()
         If Not DecisionControl.PeoplePresentList.Count > 0 Then
             Beep()

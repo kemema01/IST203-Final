@@ -31,13 +31,19 @@ Partial Class EditRestaurantsForm
         Me.cmbName = New System.Windows.Forms.ComboBox()
         Me.txtName = New System.Windows.Forms.TextBox()
         Me.grpTags = New System.Windows.Forms.GroupBox()
-        Me.grpRest = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.lstAllTags = New System.Windows.Forms.ListBox()
         Me.lstUsedTags = New System.Windows.Forms.ListBox()
+        Me.grpRest = New System.Windows.Forms.GroupBox()
+        Me.lstAllTags = New System.Windows.Forms.ListBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.btnRemove = New System.Windows.Forms.Button()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.errProv = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.cmbCost = New System.Windows.Forms.ComboBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.chkDelivery = New System.Windows.Forms.CheckBox()
+        Me.chkCarryOut = New System.Windows.Forms.CheckBox()
+        Me.chkDineIn = New System.Windows.Forms.CheckBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.grpMenu.SuspendLayout()
         Me.grpName.SuspendLayout()
         Me.grpTags.SuspendLayout()
@@ -47,7 +53,7 @@ Partial Class EditRestaurantsForm
         '
         'btnExit
         '
-        Me.btnExit.Location = New System.Drawing.Point(12, 419)
+        Me.btnExit.Location = New System.Drawing.Point(12, 492)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(75, 23)
         Me.btnExit.TabIndex = 18
@@ -56,7 +62,7 @@ Partial Class EditRestaurantsForm
         '
         'btnConfirm
         '
-        Me.btnConfirm.Location = New System.Drawing.Point(353, 419)
+        Me.btnConfirm.Location = New System.Drawing.Point(353, 492)
         Me.btnConfirm.Name = "btnConfirm"
         Me.btnConfirm.Size = New System.Drawing.Size(75, 23)
         Me.btnConfirm.TabIndex = 13
@@ -84,11 +90,14 @@ Partial Class EditRestaurantsForm
         '
         'grpName
         '
+        Me.grpName.Controls.Add(Me.Label3)
+        Me.grpName.Controls.Add(Me.Label2)
+        Me.grpName.Controls.Add(Me.cmbCost)
         Me.grpName.Controls.Add(Me.cmbName)
         Me.grpName.Controls.Add(Me.txtName)
         Me.grpName.Location = New System.Drawing.Point(223, 55)
         Me.grpName.Name = "grpName"
-        Me.grpName.Size = New System.Drawing.Size(205, 80)
+        Me.grpName.Size = New System.Drawing.Size(205, 111)
         Me.grpName.TabIndex = 14
         Me.grpName.TabStop = False
         Me.grpName.Text = "Restaurant"
@@ -104,48 +113,20 @@ Partial Class EditRestaurantsForm
         'txtName
         '
         Me.txtName.Enabled = False
-        Me.txtName.Location = New System.Drawing.Point(6, 52)
+        Me.txtName.Location = New System.Drawing.Point(61, 52)
         Me.txtName.Name = "txtName"
-        Me.txtName.Size = New System.Drawing.Size(194, 22)
+        Me.txtName.Size = New System.Drawing.Size(139, 22)
         Me.txtName.TabIndex = 0
         '
         'grpTags
         '
         Me.grpTags.Controls.Add(Me.lstUsedTags)
-        Me.grpTags.Location = New System.Drawing.Point(223, 141)
+        Me.grpTags.Location = New System.Drawing.Point(223, 214)
         Me.grpTags.Name = "grpTags"
         Me.grpTags.Size = New System.Drawing.Size(205, 240)
         Me.grpTags.TabIndex = 17
         Me.grpTags.TabStop = False
         Me.grpTags.Text = "Associated Tags"
-        '
-        'grpRest
-        '
-        Me.grpRest.Controls.Add(Me.lstAllTags)
-        Me.grpRest.Location = New System.Drawing.Point(12, 141)
-        Me.grpRest.Name = "grpRest"
-        Me.grpRest.Size = New System.Drawing.Size(205, 240)
-        Me.grpRest.TabIndex = 16
-        Me.grpRest.TabStop = False
-        Me.grpRest.Text = "All Tags"
-        '
-        'Label1
-        '
-        Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label1.Location = New System.Drawing.Point(12, 9)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(416, 29)
-        Me.Label1.TabIndex = 12
-        Me.Label1.Text = "The power to change a restaurant without all the reponsibility."
-        '
-        'lstAllTags
-        '
-        Me.lstAllTags.FormattingEnabled = True
-        Me.lstAllTags.ItemHeight = 16
-        Me.lstAllTags.Location = New System.Drawing.Point(6, 21)
-        Me.lstAllTags.Name = "lstAllTags"
-        Me.lstAllTags.Size = New System.Drawing.Size(193, 212)
-        Me.lstAllTags.TabIndex = 0
         '
         'lstUsedTags
         '
@@ -156,9 +137,38 @@ Partial Class EditRestaurantsForm
         Me.lstUsedTags.Size = New System.Drawing.Size(193, 212)
         Me.lstUsedTags.TabIndex = 1
         '
+        'grpRest
+        '
+        Me.grpRest.Controls.Add(Me.lstAllTags)
+        Me.grpRest.Location = New System.Drawing.Point(12, 214)
+        Me.grpRest.Name = "grpRest"
+        Me.grpRest.Size = New System.Drawing.Size(205, 240)
+        Me.grpRest.TabIndex = 16
+        Me.grpRest.TabStop = False
+        Me.grpRest.Text = "All Tags"
+        '
+        'lstAllTags
+        '
+        Me.lstAllTags.FormattingEnabled = True
+        Me.lstAllTags.ItemHeight = 16
+        Me.lstAllTags.Location = New System.Drawing.Point(6, 21)
+        Me.lstAllTags.Name = "lstAllTags"
+        Me.lstAllTags.Size = New System.Drawing.Size(193, 212)
+        Me.lstAllTags.TabIndex = 0
+        '
+        'Label1
+        '
+        Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Label1.Location = New System.Drawing.Point(12, 9)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(416, 29)
+        Me.Label1.TabIndex = 12
+        Me.Label1.Text = "The power to change a restaurant without all the reponsibility."
+        '
         'btnRemove
         '
-        Me.btnRemove.Location = New System.Drawing.Point(223, 387)
+        Me.btnRemove.Enabled = False
+        Me.btnRemove.Location = New System.Drawing.Point(223, 460)
         Me.btnRemove.Name = "btnRemove"
         Me.btnRemove.Size = New System.Drawing.Size(100, 25)
         Me.btnRemove.TabIndex = 20
@@ -167,7 +177,8 @@ Partial Class EditRestaurantsForm
         '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(117, 387)
+        Me.btnAdd.Enabled = False
+        Me.btnAdd.Location = New System.Drawing.Point(117, 460)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(100, 25)
         Me.btnAdd.TabIndex = 19
@@ -178,11 +189,72 @@ Partial Class EditRestaurantsForm
         '
         Me.errProv.ContainerControl = Me
         '
+        'cmbCost
+        '
+        Me.cmbCost.Enabled = False
+        Me.cmbCost.FormattingEnabled = True
+        Me.cmbCost.Items.AddRange(New Object() {"$", "$$", "$$$"})
+        Me.cmbCost.Location = New System.Drawing.Point(61, 80)
+        Me.cmbCost.Name = "cmbCost"
+        Me.cmbCost.Size = New System.Drawing.Size(139, 24)
+        Me.cmbCost.TabIndex = 2
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(15, 83)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(40, 17)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "Cost:"
+        '
+        'chkDelivery
+        '
+        Me.chkDelivery.AutoSize = True
+        Me.chkDelivery.Location = New System.Drawing.Point(345, 172)
+        Me.chkDelivery.Name = "chkDelivery"
+        Me.chkDelivery.Size = New System.Drawing.Size(81, 21)
+        Me.chkDelivery.TabIndex = 22
+        Me.chkDelivery.Text = "Delivery"
+        Me.chkDelivery.UseVisualStyleBackColor = True
+        '
+        'chkCarryOut
+        '
+        Me.chkCarryOut.AutoSize = True
+        Me.chkCarryOut.Location = New System.Drawing.Point(178, 172)
+        Me.chkCarryOut.Name = "chkCarryOut"
+        Me.chkCarryOut.Size = New System.Drawing.Size(91, 21)
+        Me.chkCarryOut.TabIndex = 23
+        Me.chkCarryOut.Text = "Carry Out"
+        Me.chkCarryOut.UseVisualStyleBackColor = True
+        '
+        'chkDineIn
+        '
+        Me.chkDineIn.AutoSize = True
+        Me.chkDineIn.Location = New System.Drawing.Point(18, 172)
+        Me.chkDineIn.Name = "chkDineIn"
+        Me.chkDineIn.Size = New System.Drawing.Size(74, 21)
+        Me.chkDineIn.TabIndex = 21
+        Me.chkDineIn.Text = "Dine In"
+        Me.chkDineIn.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(6, 55)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(49, 17)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Text = "Name:"
+        '
         'EditRestaurantsForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(438, 448)
+        Me.ClientSize = New System.Drawing.Size(438, 528)
+        Me.Controls.Add(Me.chkDelivery)
+        Me.Controls.Add(Me.chkCarryOut)
+        Me.Controls.Add(Me.chkDineIn)
         Me.Controls.Add(Me.btnRemove)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.btnExit)
@@ -206,6 +278,7 @@ Partial Class EditRestaurantsForm
         Me.grpRest.ResumeLayout(False)
         CType(Me.errProv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -224,4 +297,10 @@ Partial Class EditRestaurantsForm
     Friend WithEvents btnRemove As Button
     Friend WithEvents btnAdd As Button
     Friend WithEvents errProv As ErrorProvider
+    Friend WithEvents Label2 As Label
+    Friend WithEvents cmbCost As ComboBox
+    Friend WithEvents chkDelivery As CheckBox
+    Friend WithEvents chkCarryOut As CheckBox
+    Friend WithEvents chkDineIn As CheckBox
+    Friend WithEvents Label3 As Label
 End Class

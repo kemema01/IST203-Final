@@ -53,6 +53,7 @@
                 errProv.SetError(btnConfirm, DBUtilities.LastStatus)
                 Return
             End If
+            OptionsControl.ChangesMade = True
             'get the new record's id
             temp.ID = DBUtilities.GetNewPersonEntry
             'use that id to enter like lines -
@@ -98,11 +99,12 @@
             'If the names are different, update the name
             If Not txtName.Text.Equals(CType(cmbName.SelectedValue, Person).Name) Then
                 'error out if person record can't be updated, else continue
-                If Not DBUtilities.UpdatePerson(temp, CType(cmbName.SelectedValue, Person)) Then
+                If Not DBUtilities.UpdatePerson(CType(cmbName.SelectedValue, Person), temp) Then
                     Beep()
                     errProv.SetError(btnConfirm, DBUtilities.LastStatus)
                     Return
                 End If
+                OptionsControl.ChangesMade = True
             End If
             'if temp's likes don't equal the selected person's likes, delete the
             'like lines from the db and replace them.
@@ -125,6 +127,7 @@
             DBUtilities.DeleteAttendanceLines(temp)
             'delete person
             DBUtilities.DeletePerson(temp)
+            OptionsControl.ChangesMade = True
         End If
         ResetLists()
     End Sub

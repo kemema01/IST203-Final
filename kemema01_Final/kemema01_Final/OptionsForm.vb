@@ -15,6 +15,10 @@ Public Class OptionsForm
     End Sub
 
     Private Sub btnDone_Click(sender As Object, e As EventArgs) Handles btnDone.Click
+        Me.Close()
+    End Sub
+
+    Private Sub OptionsForm_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         If OptionsControl.ChangesMade = True Then
             DecisionControl.Reset()
             OptionsControl.ChangesMade = False
