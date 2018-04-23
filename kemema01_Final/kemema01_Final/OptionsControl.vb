@@ -5,6 +5,7 @@ Public NotInheritable Class OptionsControl
     Private Shared mHistoryEntries As New List(Of HistoryEntry)
     Private Shared mPeopleMasterList As New List(Of Person)
     Private Shared mTagMasterList As New List(Of Tag)
+    Private Shared mChangesMade As Boolean = False
 
 
     Private Sub New()
@@ -17,6 +18,15 @@ Public NotInheritable Class OptionsControl
             DBUtilities.GetDislikeLines(buddy)
         Next
     End Sub
+
+    Public Shared Property ChangesMade As Boolean
+        Get
+            Return mChangesMade
+        End Get
+        Set(value As Boolean)
+            mChangesMade = value
+        End Set
+    End Property
 
     Public Shared Property HistoryEntries As List(Of HistoryEntry)
         Get

@@ -42,16 +42,16 @@ Partial Class OptionsForm
         '
         Me.cmbSelection.FormattingEnabled = True
         Me.cmbSelection.Items.AddRange(New Object() {"People", "Restaurants"})
-        Me.cmbSelection.Location = New System.Drawing.Point(200, 32)
+        Me.cmbSelection.Location = New System.Drawing.Point(190, 33)
         Me.cmbSelection.Name = "cmbSelection"
         Me.cmbSelection.Size = New System.Drawing.Size(131, 24)
         Me.cmbSelection.TabIndex = 2
         '
         'btnGo
         '
-        Me.btnGo.Location = New System.Drawing.Point(337, 31)
+        Me.btnGo.Location = New System.Drawing.Point(327, 31)
         Me.btnGo.Name = "btnGo"
-        Me.btnGo.Size = New System.Drawing.Size(35, 26)
+        Me.btnGo.Size = New System.Drawing.Size(45, 26)
         Me.btnGo.TabIndex = 3
         Me.btnGo.Text = "Go"
         Me.btnGo.UseVisualStyleBackColor = True

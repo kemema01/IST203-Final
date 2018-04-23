@@ -11,4 +11,11 @@ Public Class OptionsForm
     Private Sub OptionsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cmbSelection.SelectedIndex = -1
     End Sub
+
+    Private Sub btnDone_Click(sender As Object, e As EventArgs) Handles btnDone.Click
+        If OptionsControl.ChangesMade = True Then
+            DecisionControl.Reset()
+            OptionsControl.ChangesMade = False
+        End If
+    End Sub
 End Class

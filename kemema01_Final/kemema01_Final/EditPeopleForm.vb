@@ -126,6 +126,7 @@
             'delete person
             DBUtilities.DeletePerson(temp)
         End If
+        ResetLists()
     End Sub
 
     Private Sub cmbMenu_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbMenu.SelectedIndexChanged
@@ -163,16 +164,24 @@
     End Sub
 
     Private Sub EditPeopleForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        OptionsControl.PeopleMasterList = DBUtilities.GetMembersList()
-        OptionsControl.LoadPrefs()
+        'OptionsControl.PeopleMasterList = DBUtilities.GetMembersList()
+        'OptionsControl.LoadPrefs()
+        ResetLists()
         OptionsControl.TagMasterList = DBUtilities.GetTagList()
-        formLoaded = True
         cmbName.DataSource = OptionsControl.PeopleMasterList
+        formLoaded = True
         cmbName.SelectedIndex = -1
         For Each item In OptionsControl.TagMasterList
             clstDislikes.Items.Add(item)
             clstLikes.Items.Add(item)
         Next
+        ResetLists()
+    End Sub
+
+    Private Sub ResetLists()
+        OptionsControl.PeopleMasterList.Clear()
+        OptionsControl.PeopleMasterList = DBUtilities.GetMembersList
+        OptionsControl.LoadPrefs()
     End Sub
 
     Private Sub cmbName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbName.SelectedIndexChanged

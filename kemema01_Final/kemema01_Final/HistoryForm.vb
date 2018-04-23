@@ -4,7 +4,7 @@ Option Strict On
 Public Class HistoryForm
     Dim formloaded As Boolean = False
     Private Sub HistoryForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        OptionsControl.HistoryEntries.Clear()
         OptionsControl.HistoryEntries = DBUtilities.GetHistoryEntries
         DBUtilities.GetAttendanceLines(OptionsControl.HistoryEntries)
 
