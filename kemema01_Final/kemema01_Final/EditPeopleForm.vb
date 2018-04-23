@@ -167,6 +167,7 @@
         'OptionsControl.PeopleMasterList = DBUtilities.GetMembersList()
         'OptionsControl.LoadPrefs()
         ResetLists()
+
         OptionsControl.TagMasterList = DBUtilities.GetTagList()
         cmbName.DataSource = OptionsControl.PeopleMasterList
         formLoaded = True

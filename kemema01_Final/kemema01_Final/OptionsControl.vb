@@ -5,6 +5,7 @@ Public NotInheritable Class OptionsControl
     Private Shared mHistoryEntries As New List(Of HistoryEntry)
     Private Shared mPeopleMasterList As New List(Of Person)
     Private Shared mTagMasterList As New List(Of Tag)
+    Private Shared mRestMasterList As New List(Of Restaurant)
     Private Shared mChangesMade As Boolean = False
 
 
@@ -12,12 +13,22 @@ Public NotInheritable Class OptionsControl
 
     End Sub
 
+
     Public Shared Sub LoadPrefs()
         For Each buddy In PeopleMasterList
             DBUtilities.GetLikeLines(buddy)
             DBUtilities.GetDislikeLines(buddy)
         Next
     End Sub
+
+    Public Shared Property RestMasterList As List(Of Restaurant)
+        Get
+            Return mRestMasterList
+        End Get
+        Set(value As List(Of Restaurant))
+            mRestMasterList = value
+        End Set
+    End Property
 
     Public Shared Property ChangesMade As Boolean
         Get

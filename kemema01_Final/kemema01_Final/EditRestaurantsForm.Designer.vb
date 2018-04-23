@@ -22,6 +22,7 @@ Partial Class EditRestaurantsForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.btnConfirm = New System.Windows.Forms.Button()
         Me.grpMenu = New System.Windows.Forms.GroupBox()
@@ -34,15 +35,19 @@ Partial Class EditRestaurantsForm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lstAllTags = New System.Windows.Forms.ListBox()
         Me.lstUsedTags = New System.Windows.Forms.ListBox()
+        Me.btnRemove = New System.Windows.Forms.Button()
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.errProv = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.grpMenu.SuspendLayout()
         Me.grpName.SuspendLayout()
         Me.grpTags.SuspendLayout()
         Me.grpRest.SuspendLayout()
+        CType(Me.errProv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnExit
         '
-        Me.btnExit.Location = New System.Drawing.Point(18, 387)
+        Me.btnExit.Location = New System.Drawing.Point(12, 419)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(75, 23)
         Me.btnExit.TabIndex = 18
@@ -51,7 +56,7 @@ Partial Class EditRestaurantsForm
         '
         'btnConfirm
         '
-        Me.btnConfirm.Location = New System.Drawing.Point(348, 387)
+        Me.btnConfirm.Location = New System.Drawing.Point(353, 419)
         Me.btnConfirm.Name = "btnConfirm"
         Me.btnConfirm.Size = New System.Drawing.Size(75, 23)
         Me.btnConfirm.TabIndex = 13
@@ -90,7 +95,6 @@ Partial Class EditRestaurantsForm
         '
         'cmbName
         '
-        Me.cmbName.Enabled = False
         Me.cmbName.FormattingEnabled = True
         Me.cmbName.Location = New System.Drawing.Point(6, 22)
         Me.cmbName.Name = "cmbName"
@@ -152,11 +156,35 @@ Partial Class EditRestaurantsForm
         Me.lstUsedTags.Size = New System.Drawing.Size(193, 212)
         Me.lstUsedTags.TabIndex = 1
         '
+        'btnRemove
+        '
+        Me.btnRemove.Location = New System.Drawing.Point(223, 387)
+        Me.btnRemove.Name = "btnRemove"
+        Me.btnRemove.Size = New System.Drawing.Size(100, 25)
+        Me.btnRemove.TabIndex = 20
+        Me.btnRemove.Text = "< Remove"
+        Me.btnRemove.UseVisualStyleBackColor = True
+        '
+        'btnAdd
+        '
+        Me.btnAdd.Location = New System.Drawing.Point(117, 387)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(100, 25)
+        Me.btnAdd.TabIndex = 19
+        Me.btnAdd.Text = "Add >"
+        Me.btnAdd.UseVisualStyleBackColor = True
+        '
+        'errProv
+        '
+        Me.errProv.ContainerControl = Me
+        '
         'EditRestaurantsForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(438, 414)
+        Me.ClientSize = New System.Drawing.Size(438, 448)
+        Me.Controls.Add(Me.btnRemove)
+        Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.btnExit)
         Me.Controls.Add(Me.btnConfirm)
         Me.Controls.Add(Me.grpMenu)
@@ -176,6 +204,7 @@ Partial Class EditRestaurantsForm
         Me.grpName.PerformLayout()
         Me.grpTags.ResumeLayout(False)
         Me.grpRest.ResumeLayout(False)
+        CType(Me.errProv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -192,4 +221,7 @@ Partial Class EditRestaurantsForm
     Friend WithEvents Label1 As Label
     Friend WithEvents lstUsedTags As ListBox
     Friend WithEvents lstAllTags As ListBox
+    Friend WithEvents btnRemove As Button
+    Friend WithEvents btnAdd As Button
+    Friend WithEvents errProv As ErrorProvider
 End Class

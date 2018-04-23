@@ -5,6 +5,8 @@ Public Class OptionsForm
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnGo.Click
         If cmbSelection.SelectedItem Is "People" Then
             EditPeopleForm.ShowDialog()
+        ElseIf cmbSelection.SelectedItem Is "Restaurants" Then
+            EditRestaurantsForm.ShowDialog()
         End If
     End Sub
 

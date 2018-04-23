@@ -63,7 +63,7 @@ Public Class SoundsGoodForm
             lstDesiredTags.Items.Remove(lstDesiredTags.SelectedItem)
         Else
             Beep()
-            errprov.SetError(btnRemove, "Select a person to remove!")
+            errprov.SetError(btnRemove, "Select a tag to remove!")
             Return
         End If
     End Sub
