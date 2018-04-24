@@ -29,12 +29,12 @@ Partial Class EditPeopleForm
         Me.grpRest = New System.Windows.Forms.GroupBox()
         Me.clstLikes = New System.Windows.Forms.CheckedListBox()
         Me.grpName = New System.Windows.Forms.GroupBox()
+        Me.cmbName = New System.Windows.Forms.ComboBox()
         Me.txtName = New System.Windows.Forms.TextBox()
         Me.grpMenu = New System.Windows.Forms.GroupBox()
         Me.cmbMenu = New System.Windows.Forms.ComboBox()
         Me.btnConfirm = New System.Windows.Forms.Button()
         Me.btnExit = New System.Windows.Forms.Button()
-        Me.cmbName = New System.Windows.Forms.ComboBox()
         Me.errProv = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.grpTags.SuspendLayout()
         Me.grpRest.SuspendLayout()
@@ -103,6 +103,16 @@ Partial Class EditPeopleForm
         Me.grpName.TabStop = False
         Me.grpName.Text = "Name"
         '
+        'cmbName
+        '
+        Me.cmbName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbName.Enabled = False
+        Me.cmbName.FormattingEnabled = True
+        Me.cmbName.Location = New System.Drawing.Point(6, 22)
+        Me.cmbName.Name = "cmbName"
+        Me.cmbName.Size = New System.Drawing.Size(194, 24)
+        Me.cmbName.TabIndex = 1
+        '
         'txtName
         '
         Me.txtName.Enabled = False
@@ -123,6 +133,7 @@ Partial Class EditPeopleForm
         '
         'cmbMenu
         '
+        Me.cmbMenu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbMenu.FormattingEnabled = True
         Me.cmbMenu.Items.AddRange(New Object() {"Create", "Update", "Delete"})
         Me.cmbMenu.Location = New System.Drawing.Point(6, 22)
@@ -147,15 +158,6 @@ Partial Class EditPeopleForm
         Me.btnExit.TabIndex = 11
         Me.btnExit.Text = "Exit"
         Me.btnExit.UseVisualStyleBackColor = True
-        '
-        'cmbName
-        '
-        Me.cmbName.Enabled = False
-        Me.cmbName.FormattingEnabled = True
-        Me.cmbName.Location = New System.Drawing.Point(6, 22)
-        Me.cmbName.Name = "cmbName"
-        Me.cmbName.Size = New System.Drawing.Size(194, 24)
-        Me.cmbName.TabIndex = 1
         '
         'errProv
         '

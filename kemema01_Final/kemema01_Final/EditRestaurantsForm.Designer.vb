@@ -28,6 +28,9 @@ Partial Class EditRestaurantsForm
         Me.grpMenu = New System.Windows.Forms.GroupBox()
         Me.cmbMenu = New System.Windows.Forms.ComboBox()
         Me.grpName = New System.Windows.Forms.GroupBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.cmbCost = New System.Windows.Forms.ComboBox()
         Me.cmbName = New System.Windows.Forms.ComboBox()
         Me.txtName = New System.Windows.Forms.TextBox()
         Me.grpTags = New System.Windows.Forms.GroupBox()
@@ -38,12 +41,9 @@ Partial Class EditRestaurantsForm
         Me.btnRemove = New System.Windows.Forms.Button()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.errProv = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.cmbCost = New System.Windows.Forms.ComboBox()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.chkDelivery = New System.Windows.Forms.CheckBox()
         Me.chkCarryOut = New System.Windows.Forms.CheckBox()
         Me.chkDineIn = New System.Windows.Forms.CheckBox()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.grpMenu.SuspendLayout()
         Me.grpName.SuspendLayout()
         Me.grpTags.SuspendLayout()
@@ -81,6 +81,7 @@ Partial Class EditRestaurantsForm
         '
         'cmbMenu
         '
+        Me.cmbMenu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbMenu.FormattingEnabled = True
         Me.cmbMenu.Items.AddRange(New Object() {"Create", "Update", "Delete"})
         Me.cmbMenu.Location = New System.Drawing.Point(6, 22)
@@ -102,8 +103,38 @@ Partial Class EditRestaurantsForm
         Me.grpName.TabStop = False
         Me.grpName.Text = "Restaurant"
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(6, 55)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(49, 17)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Text = "Name:"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(15, 83)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(40, 17)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "Cost:"
+        '
+        'cmbCost
+        '
+        Me.cmbCost.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbCost.Enabled = False
+        Me.cmbCost.FormattingEnabled = True
+        Me.cmbCost.Items.AddRange(New Object() {"$", "$$", "$$$"})
+        Me.cmbCost.Location = New System.Drawing.Point(61, 80)
+        Me.cmbCost.Name = "cmbCost"
+        Me.cmbCost.Size = New System.Drawing.Size(139, 24)
+        Me.cmbCost.TabIndex = 2
+        '
         'cmbName
         '
+        Me.cmbName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbName.FormattingEnabled = True
         Me.cmbName.Location = New System.Drawing.Point(6, 22)
         Me.cmbName.Name = "cmbName"
@@ -189,25 +220,6 @@ Partial Class EditRestaurantsForm
         '
         Me.errProv.ContainerControl = Me
         '
-        'cmbCost
-        '
-        Me.cmbCost.Enabled = False
-        Me.cmbCost.FormattingEnabled = True
-        Me.cmbCost.Items.AddRange(New Object() {"$", "$$", "$$$"})
-        Me.cmbCost.Location = New System.Drawing.Point(61, 80)
-        Me.cmbCost.Name = "cmbCost"
-        Me.cmbCost.Size = New System.Drawing.Size(139, 24)
-        Me.cmbCost.TabIndex = 2
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(15, 83)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(40, 17)
-        Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Cost:"
-        '
         'chkDelivery
         '
         Me.chkDelivery.AutoSize = True
@@ -237,15 +249,6 @@ Partial Class EditRestaurantsForm
         Me.chkDineIn.TabIndex = 21
         Me.chkDineIn.Text = "Dine In"
         Me.chkDineIn.UseVisualStyleBackColor = True
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(6, 55)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(49, 17)
-        Me.Label3.TabIndex = 4
-        Me.Label3.Text = "Name:"
         '
         'EditRestaurantsForm
         '

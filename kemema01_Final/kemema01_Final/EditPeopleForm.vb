@@ -151,7 +151,7 @@
                 clstDislikes.Enabled = True
             ElseIf cmbMenu.SelectedItem Is "Update" Then
                 'txtName.Visible = False
-                'txtName.Enabled = False
+                txtName.Enabled = True
                 txtName.Text = ""
                 'cmbName.Visible = True
                 cmbName.Enabled = True

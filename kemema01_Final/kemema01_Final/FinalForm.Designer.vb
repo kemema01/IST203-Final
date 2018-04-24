@@ -29,6 +29,7 @@ Partial Class FinalForm
         Me.lstScoreBoard = New System.Windows.Forms.ListBox()
         Me.btnList = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.btnRandom = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -98,11 +99,22 @@ Partial Class FinalForm
         Me.Label3.TabIndex = 6
         Me.Label3.Text = "Not good enough? Check 'Reject' and choose from the list below."
         '
+        'btnRandom
+        '
+        Me.btnRandom.Enabled = False
+        Me.btnRandom.Location = New System.Drawing.Point(168, 242)
+        Me.btnRandom.Name = "btnRandom"
+        Me.btnRandom.Size = New System.Drawing.Size(75, 23)
+        Me.btnRandom.TabIndex = 7
+        Me.btnRandom.Text = "Random"
+        Me.btnRandom.UseVisualStyleBackColor = True
+        '
         'FinalForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(333, 269)
+        Me.Controls.Add(Me.btnRandom)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.btnList)
         Me.Controls.Add(Me.lstScoreBoard)
@@ -129,4 +141,5 @@ Partial Class FinalForm
     Friend WithEvents lstScoreBoard As ListBox
     Friend WithEvents btnList As Button
     Friend WithEvents Label3 As Label
+    Friend WithEvents btnRandom As Button
 End Class
