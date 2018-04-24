@@ -453,7 +453,7 @@ Public NotInheritable Class DBUtilities
 
         For Each descriptor In buddy.Dislikes
             SQL += "(" + buddy.ID.ToString + ", " + descriptor.ID.ToString + ")"
-            If buddy.Likes.IndexOf(descriptor) < buddy.Likes.Count - 1 Then
+            If buddy.Dislikes.IndexOf(descriptor) < buddy.Dislikes.Count - 1 Then
                 SQL += ", "
             Else
                 SQL += ";"
